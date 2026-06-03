@@ -4,18 +4,18 @@ import { Button } from '../Button';
 import { Workbench, WorkbenchSubPanel, WorkbenchToast } from '../Workbench';
 import { ThemeSwitcher, type Skin } from '../ThemeSwitcher';
 
-export interface MobilePanelLayoutProps {
+export interface WorkbenchLayoutProps {
   initialSkin?: Skin;
 }
 
 /**
- * MobilePanelLayout
+ * WorkbenchLayout
  * 
  * An advanced dashboard layout featuring responsive panels (left, center, right),
  * toggleable overlay sub-panels, and contextual notifications/toasts.
  * Adapts beautifully to mobile viewports with drawer toggles.
  */
-export const MobilePanelLayout: React.FC<MobilePanelLayoutProps> = ({ initialSkin = 'crt' }) => {
+export const WorkbenchLayout: React.FC<WorkbenchLayoutProps> = ({ initialSkin = 'crt' }) => {
   const [skin, setSkin] = useState<Skin>(initialSkin);
   
   // State for sub-panels
@@ -87,7 +87,7 @@ export const MobilePanelLayout: React.FC<MobilePanelLayoutProps> = ({ initialSki
   );
 
   return (
-    <div data-skin={skin} className="ads-mobile-panel-layout" style={{ background: 'var(--ads-color-bg)', minHeight: '100vh', boxSizing: 'border-box' }}>
+    <div data-skin={skin} className="ads-workbench-layout-container" style={{ background: 'var(--ads-color-bg)', minHeight: '100vh', boxSizing: 'border-box' }}>
       <Workbench 
         mobileTitle="ADS WORKBENCH"
         mobileSubtitle={`${skin.toUpperCase()} ONLINE`}

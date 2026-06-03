@@ -5,7 +5,7 @@ import { DesktopManagerLayout } from './DesktopManagerLayout';
 import { DatabaseRecordsLayout } from './DatabaseRecordsLayout';
 import { ControlSettingsLayout } from './ControlSettingsLayout';
 import { SetupWizardLayout } from './SetupWizardLayout';
-import { MobilePanelLayout } from './MobilePanelLayout';
+import { WorkbenchLayout } from './WorkbenchLayout';
 
 const meta: Meta = {
   title: 'Layout Templates',
@@ -36,7 +36,8 @@ export const SetupWizard: StoryObj = {
   render: () => <SetupWizardLayout />,
 };
 
-export const MobilePanel: StoryObj = {
-  render: () => <MobilePanelLayout />,
+export const Workbench: StoryObj = {
+  render: () => <WorkbenchLayout />,
 };
+
 

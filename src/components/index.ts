@@ -33,7 +33,7 @@ export * from './templates/DesktopManagerLayout';
 export * from './templates/DatabaseRecordsLayout';
 export * from './templates/ControlSettingsLayout';
 export * from './templates/SetupWizardLayout';
-export * from './templates/MobilePanelLayout';
+export * from './templates/WorkbenchLayout';
 export * from './ThemeSwitcher';
 
 // New Additions
