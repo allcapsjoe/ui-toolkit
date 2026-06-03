@@ -1,4 +1,5 @@
 export * from './AppShell';
+export * from './Workbench';
 export * from './Badge';
 export * from './Button';
 export * from './CodeBlock';
@@ -32,6 +33,7 @@ export * from './templates/DesktopManagerLayout';
 export * from './templates/DatabaseRecordsLayout';
 export * from './templates/ControlSettingsLayout';
 export * from './templates/SetupWizardLayout';
+export * from './templates/MobilePanelLayout';
 export * from './ThemeSwitcher';
 
 // New Additions
