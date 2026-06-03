@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * Mainframe Skin — ALLCAPS Design System (ADS)
+ *
+ * 70s-style functional density. Pure monospaced, white-on-black.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="mainframe"] {
+  --ads-color-bg:          #000000;
+  --ads-color-surface:     #111111;
+  --ads-color-primary:     #ffffff;
+  --ads-color-secondary:   #aaaaaa;
+  --ads-color-text:        #ffffff;
+  --ads-color-text-muted:  #666666;
+  --ads-color-border:      #ffffff;
+  --ads-radius:            0px;
+  --ads-glow:              none;
+  --ads-font-mono:         'Courier', 'Consolas', monospace;
+  --ads-font-scale:        0.9;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+}
+
+[data-skin="mainframe"] h1, [data-skin="mainframe"] h2 {
+  background: #fff !important;
+  color: #000 !important;
+  display: inline-block;
+  padding: 2px 8px;
+  text-transform: uppercase;
+}
+
+[data-skin="mainframe"] button {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+}
+
+[data-skin="mainframe"] button:hover {
+  background: #fff;
+  color: #000;
+}
+
+[data-skin="mainframe"] .card {
+  border: 1px solid #fff;
+  padding: 0.5rem;
+}
+
+[data-skin="mainframe"] table {
+  border: 1px solid #fff;
+}
+
+[data-skin="mainframe"] th {
+  border-bottom: 1px solid #fff;
+}
+
+/* Workbench Toast Overrides for Mainframe readability */
+[data-skin="mainframe"] .ads-workbench-toast {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+[data-skin="mainframe"] .ads-workbench-toast__content {
+  color: #ffffff !important;
+}
+[data-skin="mainframe"] .ads-workbench-toast__x {
+  color: #ffffff !important;
+}
+[data-skin="mainframe"] .ads-workbench-toast__close {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+}
+[data-skin="mainframe"] .ads-workbench-toast__close:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+

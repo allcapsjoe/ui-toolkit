@@ -1,0 +1,359 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * WE ARE 26 Theme (FIFA World Cup 2026 style)
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="archive"] {
+  /* ── cup.watch.combined Variables ── */
+  --panel:                 rgba(230, 230, 230, 0.92);
+  --line:                  rgba(0, 0, 0, 0.75);
+  --muted:                 #555555;
+  --accent:                #E31B23;
+  --accent-strong:         #1E90FF;
+  --surface:               #F2F2F2;
+
+  /* ── ADS Theme Contract ── */
+  --ads-color-bg:          #FFFFFF;
+  --ads-color-surface:     #F2F2F2;
+  --ads-color-primary:     #000000; /* Bold Obsidian Black */
+  --ads-color-secondary:   #E31B23; /* FIFA Red */
+  --ads-color-text:        #000000;
+  --ads-color-text-muted:  #555555;
+  --ads-color-border:      #000000;
+  --ads-radius:            0px;
+  --ads-glow:              none;
+  --ads-font-mono:         'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  --ads-font-scale:        1.0;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+  font-size:   calc(14px * var(--ads-font-scale));
+  line-height: 1.4;
+}
+
+/* "Together" mosaic — 8 host-nation colour stripe */
+[data-skin="archive"]::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    #E31B23 0%    12.5%,
+    #FF4500 12.5% 25%,
+    #9370DB 25%   37.5%,
+    #1E90FF 37.5% 50%,
+    #129523 50%   62.5%,
+    #00CED1 62.5% 75%,
+    #FFFF00 75%   87.5%,
+    #FFA599 87.5% 100%
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* "Amplify" pattern — concentric radiating bands */
+[data-skin="archive"]::after {
+  content: '';
+  position: fixed;
+  top: -80px;
+  right: -80px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    0 0 0 16px rgba(227, 27, 35, 0.08),
+    0 0 0 32px rgba(147, 112, 219, 0.07),
+    0 0 0 48px rgba(30, 144, 255, 0.06),
+    0 0 0 64px rgba(18, 149, 35, 0.05),
+    0 0 0 80px rgba(0, 206, 209, 0.04),
+    0 0 0 96px rgba(255, 255, 0, 0.03);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbars */
+[data-skin="archive"]::-webkit-scrollbar { width: 10px; height: 10px; }
+[data-skin="archive"]::-webkit-scrollbar-track { background: var(--ads-color-bg); }
+[data-skin="archive"]::-webkit-scrollbar-thumb { 
+  background: var(--ads-color-primary);
+  border: 2px solid var(--ads-color-bg);
+}
+[data-skin="archive"]::-webkit-scrollbar-thumb:hover {
+  background: var(--ads-color-secondary);
+}
+
+/* ── Elements ────────────────────────────────────────── */
+
+[data-skin="archive"] h1, 
+[data-skin="archive"] h2, 
+[data-skin="archive"] h3 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  transform: skewX(-6deg);
+  transform-origin: left center;
+  display: inline-block;
+}
+
+/* Headings inside flow layout */
+[data-skin="archive"] h1 { font-size: 2.2rem; margin-bottom: 1.2rem; }
+[data-skin="archive"] h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+[data-skin="archive"] h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+
+/* Buttons */
+[data-skin="archive"] button {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: transparent;
+  border: 4px solid var(--ads-color-primary);
+  color: var(--ads-color-primary);
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transform: skewX(-6deg);
+  transform-origin: center;
+  transition: all 0.1s steps(4);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.85);
+  position: relative;
+  border-radius: 0px;
+}
+
+[data-skin="archive"] button:hover {
+  background: var(--ads-color-primary);
+  color: #FFFFFF !important;
+}
+
+[data-skin="archive"] button.ads-button--primary {
+  background: var(--ads-color-primary);
+  color: #FFFFFF;
+}
+
+[data-skin="archive"] button.ads-button--primary:hover {
+  background: var(--ads-color-secondary);
+  border-color: var(--ads-color-secondary);
+  color: #FFFFFF !important;
+}
+
+[data-skin="archive"] button:active {
+  transform: skewX(-6deg) translate(2px, 2px);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.85);
+}
+
+[data-skin="archive"] button:focus-visible,
+[data-skin="archive"] input:focus-visible, 
+[data-skin="archive"] select:focus-visible, 
+[data-skin="archive"] textarea:focus-visible,
+[data-skin="archive"] a:focus-visible {
+  outline: 3px dashed var(--ads-color-secondary) !important;
+  outline-offset: 3px !important;
+}
+
+/* Forms */
+[data-skin="archive"] input, 
+[data-skin="archive"] select, 
+[data-skin="archive"] textarea {
+  background: #FFFFFF;
+  border: 3px solid var(--ads-color-primary);
+  color: #000000;
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  outline: none;
+  border-radius: 0px;
+  transition: border-color 0.15s ease;
+}
+
+[data-skin="archive"] input:focus, 
+[data-skin="archive"] select:focus, 
+[data-skin="archive"] textarea:focus {
+  border-color: var(--ads-color-secondary);
+  box-shadow: 4px 4px 0px rgba(227, 27, 35, 0.15);
+}
+
+/* Panels and Cards */
+[data-skin="archive"] .card {
+  background: var(--ads-color-surface);
+  border: 4px solid var(--ads-color-primary);
+  padding: 1.5rem;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.85);
+  border-radius: 0px;
+}
+
+[data-skin="archive"] .ads-panel {
+  background: var(--ads-color-surface);
+  border: 4px solid var(--ads-color-primary);
+  padding: 0 !important; /* Bleed headers to edges */
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.85);
+  border-radius: 0px;
+}
+
+/* Scoreboard Panel Header styling */
+[data-skin="archive"] .ads-panel__header {
+  background: var(--ads-color-primary) !important;
+  color: #FFFFFF !important;
+  padding: 0.75rem 1rem !important;
+  border-bottom: 4px solid var(--ads-color-primary) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 0px;
+}
+
+[data-skin="archive"] .ads-panel__header::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--ads-color-secondary); /* Red scoreboard line indicator */
+  z-index: 10;
+}
+
+[data-skin="archive"] .ads-panel__header h2 {
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  font-size: 1.1rem;
+  transform: skewX(-6deg);
+  display: block;
+}
+
+[data-skin="archive"] .ads-panel__header .eyebrow {
+  color: var(--ads-color-secondary) !important;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  transform: skewX(-6deg);
+  display: block;
+  margin: 0 0 0.25rem !important;
+}
+
+[data-skin="archive"] .ads-panel__content {
+  padding: 1.25rem !important;
+}
+
+/* Tables */
+[data-skin="archive"] table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 4px solid var(--ads-color-primary);
+  background: #FFFFFF;
+}
+
+[data-skin="archive"] th, 
+[data-skin="archive"] td {
+  border: 2px solid var(--ads-color-primary);
+  padding: 0.75rem;
+  text-align: left;
+  font-family: inherit;
+}
+
+[data-skin="archive"] th {
+  background: var(--ads-color-primary);
+  color: #FFFFFF;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Segmented Progress Bar Track overrides */
+[data-skin="archive"] .ads-progress-container > div:last-child {
+  border: 3px solid var(--ads-color-primary) !important;
+  background: #EAEAEA !important;
+  height: 24px !important;
+}
+
+[data-skin="archive"] .ads-progress-container div[style*="clipPath"] {
+  background: var(--ads-color-secondary) !important; /* Red progression */
+}
+
+/* Theme Switcher Customization for Blocky Layout */
+[data-skin="archive"] .ads-theme-switcher {
+  border: 3px solid var(--ads-color-primary) !important;
+  background: #F2F2F2 !important;
+  border-radius: 0px !important;
+  padding: 4px !important;
+}
+
+[data-skin="archive"] .ads-theme-switcher button {
+  border-radius: 0px !important;
+  color: #555555 !important;
+  font-weight: 900 !important;
+  font-family: var(--ads-font-mono) !important;
+  min-width: 2.5rem !important;
+}
+
+[data-skin="archive"] .ads-theme-switcher button.is-active {
+  background: var(--ads-color-primary) !important;
+  color: #FFFFFF !important;
+}
+
+/* Alerts Scoreboard styling */
+[data-skin="archive"] .ads-alert {
+  border: 3px solid var(--ads-color-primary) !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  border-radius: 0px !important;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.85);
+  font-weight: 700;
+}
+
+[data-skin="archive"] .ads-alert--info {
+  border-color: var(--ads-color-secondary) !important; /* Full accent border instead of side stripe */
+}
+
+/* Codeblocks */
+[data-skin="archive"] code, 
+[data-skin="archive"] pre {
+  border: 2px solid var(--ads-color-primary);
+  border-radius: 0px;
+  background: #FFFFFF;
+}
+
+[data-skin="archive"] .text-muted { color: var(--ads-color-text-muted); }
+[data-skin="archive"] .text-accent { color: var(--ads-color-secondary); font-weight: 900; }
+
+/* Toast Overrides for FIFA 26 readability */
+[data-skin="archive"] .ads-toast {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.85) !important;
+}
+[data-skin="archive"] .ads-toast--error {
+  background: var(--ads-color-secondary) !important;
+  color: #FFFFFF !important;
+  border-color: var(--ads-color-secondary) !important;
+}
+
+/* Workbench Toast Overrides for FIFA 26 readability */
+[data-skin="archive"] .ads-workbench-toast {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border: 3px solid var(--ads-color-primary) !important;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.85) !important;
+}
+[data-skin="archive"] .ads-workbench-toast__content {
+  color: #FFFFFF !important;
+}
+[data-skin="archive"] .ads-workbench-toast__x {
+  color: #FFFFFF !important;
+}
+[data-skin="archive"] .ads-workbench-toast__close {
+  background: var(--ads-color-secondary) !important;
+  color: #FFFFFF !important;
+  border: 3px solid #FFFFFF !important;
+  box-shadow: 2px 2px 0px rgba(255,255,255,0.3) !important;
+  transform: skewX(-6deg) !important;
+}
+[data-skin="archive"] .ads-workbench-toast__close:hover {
+  background: #FFFFFF !important;
+  color: var(--ads-color-secondary) !important;
+  border-color: var(--ads-color-secondary) !important;
+}
+

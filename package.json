@@ -1,0 +1,104 @@
+{
+  "name": "@allcapsjoe/ui-toolkit",
+  "version": "1.0.0",
+  "description": "ALLCAPSJOE Retro and Vintage Style UI Toolkit",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./crt": {
+      "types": "./crt/index.tsx",
+      "import": "./crt/index.tsx"
+    },
+    "./crt/css": "./crt/crt.css",
+    "./win95": {
+      "types": "./win95/index.tsx",
+      "import": "./win95/index.tsx"
+    },
+    "./win95/css": "./win95/win95.css",
+    "./cyberpunk": {
+      "types": "./cyberpunk/index.tsx",
+      "import": "./cyberpunk/index.tsx"
+    },
+    "./cyberpunk/css": "./cyberpunk/cyberpunk.css",
+    "./eink": {
+      "types": "./eink/index.tsx",
+      "import": "./eink/index.tsx"
+    },
+    "./eink/css": "./eink/eink.css",
+    "./mainframe": {
+      "types": "./mainframe/index.tsx",
+      "import": "./mainframe/index.tsx"
+    },
+    "./mainframe/css": "./mainframe/mainframe.css",
+    "./retro": {
+      "types": "./retro/index.tsx",
+      "import": "./retro/index.tsx"
+    },
+    "./retro/css": "./retro/retro.css",
+    "./neon": {
+      "types": "./neon/index.tsx",
+      "import": "./neon/index.tsx"
+    },
+    "./neon/css": "./neon/neon.css",
+    "./archive": {
+      "types": "./archive/index.tsx",
+      "import": "./archive/index.tsx"
+    },
+    "./archive/css": "./archive/archive.css"
+  },
+  "files": [
+    "crt",
+    "win95",
+    "cyberpunk",
+    "eink",
+    "mainframe",
+    "retro",
+    "neon",
+    "archive",
+    "src",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@types/react": ">=18.0.0",
+    "react": ">=18.0.0"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "lucide-react": "^1.17.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-a11y": "^10.4.1",
+    "@storybook/addon-docs": "^10.4.1",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/addon-vitest": "^10.4.1",
+    "@storybook/react-vite": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/browser-playwright": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.7",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.60.0",
+    "storybook": "^10.4.1",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.7"
+  },
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  }
+}

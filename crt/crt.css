@@ -1,0 +1,268 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * CRT Skin — ALLCAPS Design System (ADS)
+ *
+ * This file implements the ADS Theme Contract for the 'crt' skin.
+ * Use [data-skin="crt"] on a parent element to apply.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="crt"] {
+  /* ── ADS Theme Contract ── */
+  --ads-color-bg:          #060c06;
+  --ads-color-surface:     #0d150d;
+  --ads-color-primary:     #39ff14;
+  --ads-color-secondary:   #ff6b00;
+  --ads-color-text:        #d2ffd2;
+  --ads-color-text-muted:  #75a875;
+  --ads-color-border:      rgba(57, 255, 20, 0.4);
+  --ads-radius:            0px;
+  --ads-glow:              0 0 2px rgba(57, 255, 20, 0.85),
+                           0 0 8px rgba(57, 255, 20, 0.45),
+                           0 0 16px rgba(57, 255, 20, 0.25);
+  --ads-font-mono:         ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --ads-font-scale:        1.2;
+
+  /* ── Internal Mapping ── */
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+  font-size:   calc(15px * var(--ads-font-scale));
+  line-height: 1.62;
+  letter-spacing: 0.015em;
+  text-shadow: none;
+
+  /* Monitor vignette glass shading */
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.95);
+
+  /* Aberration filter for display components */
+  --ads-aberration: drop-shadow(1px 0 0 rgba(255, 0, 0, 0.2))
+                    drop-shadow(-1px 0 0 rgba(0, 200, 255, 0.2));
+}
+
+/* ── Global Overrides ────────────────────────────────── */
+
+[data-skin="crt"] ::selection {
+  background: var(--ads-color-primary);
+  color:      var(--ads-color-bg);
+}
+
+/* Scrollbars */
+[data-skin="crt"]::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-skin="crt"]::-webkit-scrollbar-track { background: var(--ads-color-bg); }
+[data-skin="crt"]::-webkit-scrollbar-thumb { 
+  background: var(--ads-color-border);
+  border: 1px solid var(--ads-color-primary);
+}
+
+/* ── Elements ────────────────────────────────────────── */
+
+[data-skin="crt"] h1, [data-skin="crt"] h2, [data-skin="crt"] h3 {
+  color:          var(--ads-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom:  1rem;
+  text-shadow:    var(--ads-glow);
+  filter:         var(--ads-aberration);
+}
+
+[data-skin="crt"] button,
+[data-skin="crt"] .ads-panel h2,
+[data-skin="crt"] .ads-workbench__title {
+  filter:         var(--ads-aberration);
+}
+
+[data-skin="crt"] a {
+  color: var(--ads-color-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--ads-color-primary);
+}
+[data-skin="crt"] a:hover {
+  background: var(--ads-color-primary);
+  color: var(--ads-color-bg);
+}
+
+[data-skin="crt"] hr {
+  border: none;
+  border-top: 1px solid var(--ads-color-border);
+  margin: 2rem 0;
+}
+
+[data-skin="crt"] code, [data-skin="crt"] pre {
+  font-family: var(--ads-font-mono);
+  background:  var(--ads-color-surface);
+  border:      1px solid var(--ads-color-border);
+  padding:     0.2rem 0.4rem;
+}
+
+[data-skin="crt"] pre {
+  padding: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+[data-skin="crt"] table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+[data-skin="crt"] th, [data-skin="crt"] td {
+  border: 1px solid var(--ads-color-border);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+[data-skin="crt"] th {
+  background: var(--ads-color-surface);
+  color: var(--ads-color-primary);
+}
+
+/* ── Forms ───────────────────────────────────────────── */
+
+[data-skin="crt"] input, 
+[data-skin="crt"] select, 
+[data-skin="crt"] textarea, 
+[data-skin="crt"] button {
+  font-family: var(--ads-font-mono);
+  background:  var(--ads-color-bg);
+  border:      1px solid var(--ads-color-primary);
+  color:       var(--ads-color-primary);
+  padding:     0.5rem 1rem;
+  outline:     none;
+  text-transform: uppercase;
+}
+
+[data-skin="crt"] button {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+[data-skin="crt"] button:hover {
+  background: var(--ads-color-primary);
+  color:      var(--ads-color-bg);
+  box-shadow: var(--ads-glow);
+}
+
+[data-skin="crt"] input:focus-visible, 
+[data-skin="crt"] select:focus-visible, 
+[data-skin="crt"] textarea:focus-visible, 
+[data-skin="crt"] button:focus-visible,
+[data-skin="crt"] a:focus-visible {
+  outline: 2px solid var(--ads-color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--ads-glow);
+}
+
+[data-skin="crt"] input:focus, [data-skin="crt"] textarea:focus {
+  box-shadow: var(--ads-glow);
+  background: var(--ads-color-surface);
+}
+
+/* ── Utility Classes ────────────────────────────────── */
+
+[data-skin="crt"] .card {
+  background: var(--ads-color-surface);
+  border:     1px solid var(--ads-color-border);
+  padding:    1.5rem;
+  margin:     1rem 0;
+}
+
+[data-skin="crt"] .text-muted { color: var(--ads-color-text-muted); }
+[data-skin="crt"] .text-accent { color: var(--ads-color-secondary); text-shadow: 0 0 4px rgba(255, 107, 0, 0.45); }
+
+/* ── Screen Effects ──────────────────────────────────── */
+
+[data-skin="crt"]::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+  background:
+    radial-gradient(circle, rgba(0,0,0,0) 45%, rgba(0,0,0,0.85) 120%),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px, transparent 2px, transparent 4px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px);
+}
+
+[data-skin="crt"]::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1001;
+  background: 
+    linear-gradient(180deg, transparent 0%, rgba(57, 255, 20, 0.03) 10%, rgba(57, 255, 20, 0.06) 12%, rgba(57, 255, 20, 0.03) 14%, transparent 24%),
+    rgba(18, 16, 16, 0.04);
+  background-size: 100% 200%, 100% 100%;
+  animation: 
+    crt-flicker 0.15s infinite,
+    crt-sweep 30s linear infinite;
+}
+
+[data-skin="crt"] .ads-workbench__icon-button {
+  color: var(--ads-color-primary) !important;
+  border-color: var(--ads-color-primary) !important;
+  background: rgba(57, 255, 20, 0.05) !important;
+}
+
+[data-skin="crt"] .ads-workbench__title {
+  color: var(--ads-color-primary) !important;
+  text-shadow: var(--ads-glow);
+}
+
+/* Workbench Toast Overrides for CRT readability */
+[data-skin="crt"] .ads-workbench-toast {
+  background: var(--ads-color-bg) !important;
+  color: var(--ads-color-primary) !important;
+  border: 1px solid var(--ads-color-primary) !important;
+  text-shadow: var(--ads-glow) !important;
+  box-shadow: var(--ads-glow) !important;
+}
+[data-skin="crt"] .ads-workbench-toast__content {
+  color: var(--ads-color-primary) !important;
+}
+[data-skin="crt"] .ads-workbench-toast__x {
+  color: var(--ads-color-primary) !important;
+}
+[data-skin="crt"] .ads-workbench-toast__close {
+  background: transparent !important;
+  color: var(--ads-color-primary) !important;
+  border: 1px solid var(--ads-color-primary) !important;
+  text-shadow: var(--ads-glow) !important;
+}
+[data-skin="crt"] .ads-workbench-toast__close:hover {
+  background: var(--ads-color-primary) !important;
+  color: var(--ads-color-bg) !important;
+}
+
+
+/* Active Glitch Sync wobble trigger on control interactions */
+/* Active Glitch Sync wobble trigger on control interactions */
+[data-skin="crt"]:has(input:focus-visible) {
+  animation: crt-screen-glitch 0.1s steps(2) infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.98; }
+  100% { opacity: 1; }
+}
+
+@keyframes crt-sweep {
+  0% { background-position: 0% -100%, 0 0; }
+  100% { background-position: 0% 100%, 0 0; }
+}
+
+@keyframes crt-screen-glitch {
+  0% { transform: translate(1px, 1px) skew(0.5deg); filter: hue-rotate(90deg) saturate(1.5); }
+  50% { transform: translate(-1px, -1px) skew(-0.5deg); filter: hue-rotate(0deg) saturate(1.0); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-skin="crt"]::after,
+  [data-skin="crt"] .ads-terminal__cursor {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  [data-skin="crt"]:has(input:focus-visible) {
+    animation: none !important;
+  }
+}
+
+
+
+
+

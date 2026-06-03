@@ -1,0 +1,88 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * E-Ink Skin — ALLCAPS Design System (ADS)
+ *
+ * A paper-like theme using high-contrast black and white with dithering.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="eink"] {
+  --ads-color-bg:          #ffffff;
+  --ads-color-surface:     #f0f0f0;
+  --ads-color-primary:     #000000;
+  --ads-color-secondary:   #666666;
+  --ads-color-text:        #111111;
+  --ads-color-text-muted:  #888888;
+  --ads-color-border:      #000000;
+  --ads-radius:            0px;
+  --ads-glow:              none;
+  --ads-font-mono:         'Georgia', serif;
+  --ads-font-scale:        1.0;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+}
+
+[data-skin="eink"] h1, [data-skin="eink"] h2 {
+  border-bottom: 2px solid #000;
+  padding-bottom: 4px;
+  font-weight: 900;
+}
+
+[data-skin="eink"] button {
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  padding: 6px 16px;
+  font-weight: bold;
+}
+
+[data-skin="eink"] button:hover {
+  background: #fff;
+  color: #000;
+}
+
+[data-skin="eink"] .card {
+  border: 1px solid #000;
+  background: #fff;
+  padding: 1rem;
+  /* Dithering effect on shadow */
+  box-shadow: 4px 4px 0px #000;
+}
+
+[data-skin="eink"] .ads-workbench__icon-button {
+  color: #000 !important;
+  border-color: #000 !important;
+  background: transparent !important;
+}
+
+[data-skin="eink"] .ads-workbench__title {
+  color: #000 !important;
+}
+
+/* Workbench Toast Overrides for E-Ink readability */
+[data-skin="eink"] .ads-workbench-toast {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+[data-skin="eink"] .ads-workbench-toast__content {
+  color: #000000 !important;
+}
+[data-skin="eink"] .ads-workbench-toast__x {
+  color: #000000 !important;
+}
+[data-skin="eink"] .ads-workbench-toast__close {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+[data-skin="eink"] .ads-workbench-toast__close:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+
+
+

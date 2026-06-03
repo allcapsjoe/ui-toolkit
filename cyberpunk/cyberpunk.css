@@ -1,0 +1,98 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * Cyber-Glitch Skin — ALLCAPS Design System (ADS)
+ *
+ * A high-contrast neon theme with skewed elements and glitch FX.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="cyberpunk"] {
+  --ads-color-bg:          #050505;
+  --ads-color-surface:     #1a0b2e;
+  --ads-color-primary:     #00fff2; /* Neon Cyan */
+  --ads-color-secondary:   #ff00ff; /* Neon Magenta */
+  --ads-color-text:        #e0e0e0;
+  --ads-color-text-muted:  #7b4397;
+  --ads-color-border:      #00fff2;
+  --ads-radius:            0px;
+  --ads-glow:              0 0 10px #00fff2, 0 0 20px rgba(0, 255, 242, 0.3);
+  --ads-font-mono:         'Orbitron', 'Courier New', monospace;
+  --ads-font-scale:        1.1;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+  background-image: 
+    linear-gradient(rgba(0, 255, 242, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 242, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+[data-skin="cyberpunk"] h1, [data-skin="cyberpunk"] h2 {
+  color: var(--ads-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-style: italic;
+  text-shadow: 2px 2px var(--ads-color-secondary);
+  clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 0% 100%);
+  background: rgba(0, 255, 242, 0.1);
+  padding: 0.5rem 1rem;
+}
+
+[data-skin="cyberpunk"] button {
+  background: transparent;
+  border: 2px solid var(--ads-color-primary);
+  color: var(--ads-color-primary);
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  transition: all 0.2s;
+}
+
+[data-skin="cyberpunk"] button:hover {
+  background: var(--ads-color-primary);
+  color: var(--ads-color-bg);
+  box-shadow: var(--ads-glow);
+  transform: translateY(-2px);
+}
+
+[data-skin="cyberpunk"] .ads-workbench__icon-button {
+  color: var(--ads-color-primary) !important;
+  border-color: var(--ads-color-primary) !important;
+  background: rgba(0, 255, 242, 0.1) !important;
+}
+
+[data-skin="cyberpunk"] .ads-workbench__title {
+  color: var(--ads-color-primary) !important;
+  text-shadow: 2px 2px var(--ads-color-secondary);
+}
+
+/* Workbench Toast Overrides for Cyberpunk readability */
+[data-skin="cyberpunk"] .ads-workbench-toast {
+  background: #000000 !important;
+  color: var(--ads-color-primary) !important;
+  border: 2px solid var(--ads-color-primary) !important;
+  box-shadow: var(--ads-glow) !important;
+}
+[data-skin="cyberpunk"] .ads-workbench-toast__content {
+  color: var(--ads-color-primary) !important;
+}
+[data-skin="cyberpunk"] .ads-workbench-toast__x {
+  color: var(--ads-color-primary) !important;
+}
+[data-skin="cyberpunk"] .ads-workbench-toast__close {
+  background: transparent !important;
+  color: var(--ads-color-primary) !important;
+  border: 2px solid var(--ads-color-primary) !important;
+  box-shadow: var(--ads-glow) !important;
+}
+[data-skin="cyberpunk"] .ads-workbench-toast__close:hover {
+  background: var(--ads-color-primary) !important;
+  color: #000000 !important;
+}
+
+
+
+
+
+

@@ -1,0 +1,135 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * Win95 Skin — ALLCAPS Design System (ADS)
+ *
+ * This file implements the ADS Theme Contract for the 'win95' skin.
+ * Use [data-skin="win95"] on a parent element to apply.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="win95"] {
+  /* ── ADS Theme Contract ── */
+  --ads-color-bg:          #c0c0c0; /* Classic Gray */
+  --ads-color-surface:     #ffffff;
+  --ads-color-primary:     #000080; /* Navy Title Bar */
+  --ads-color-secondary:   #808080; /* Dark Gray */
+  --ads-color-text:        #000000;
+  --ads-color-text-muted:  #444444;
+  --ads-color-border:      #000000;
+  --ads-radius:            0px;
+  --ads-glow:              none;
+  --ads-font-mono:         'MS Sans Serif', 'Tahoma', 'Arial', sans-serif;
+  --ads-font-scale:        1.0;
+
+  /* ── Win95 Specifics ── */
+  --win-border-light:      #ffffff;
+  --win-border-dark:       #808080;
+  --win-border-shadow:     #000000;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+  font-size:   calc(13px * var(--ads-font-scale));
+  line-height: 1.4;
+}
+
+/* ── Global Overrides ────────────────────────────────── */
+
+[data-skin="win95"] ::selection {
+  background: var(--ads-color-primary);
+  color:      #ffffff;
+}
+
+/* ── Elements ────────────────────────────────────────── */
+
+[data-skin="win95"] h1, [data-skin="win95"] h2, [data-skin="win95"] h3 {
+  background: var(--ads-color-primary) !important;
+  color:      #ffffff !important;
+  padding:    4px 8px;
+  font-size:  14px;
+  margin:     0 0 1rem 0;
+  display:    flex;
+  align-items: center;
+}
+
+[data-skin="win95"] a {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+[data-skin="win95"] hr {
+  border: none;
+  border-top: 1px solid var(--win-border-dark);
+  border-bottom: 1px solid var(--win-border-light);
+  margin: 1.5rem 0;
+}
+
+/* ── Forms & Buttons ────────────────────────────────── */
+
+[data-skin="win95"] button {
+  background: var(--ads-color-bg);
+  border: 1px solid var(--win-border-shadow);
+  box-shadow: inset 1px 1px var(--win-border-light), 1px 1px var(--win-border-dark);
+  padding: 4px 12px;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+[data-skin="win95"] input:focus-visible, 
+[data-skin="win95"] select:focus-visible, 
+[data-skin="win95"] textarea:focus-visible, 
+[data-skin="win95"] button:focus-visible,
+[data-skin="win95"] a:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px; /* inner dotted border */
+}
+
+[data-skin="win95"] button:active {
+  box-shadow: inset 1px 1px var(--win-border-dark), inset -1px -1px var(--win-border-light);
+  padding: 5px 11px 3px 13px; /* "Push" effect */
+}
+
+[data-skin="win95"] input, [data-skin="win95"] select, [data-skin="win95"] textarea {
+  background: #ffffff;
+  border: 1px solid var(--win-border-dark);
+  box-shadow: inset 1px 1px var(--win-border-shadow), 1px 1px var(--win-border-light);
+  padding: 4px;
+  outline: none;
+}
+
+/* ── Utility Classes ────────────────────────────────── */
+
+[data-skin="win95"] .card {
+  border: 1px solid var(--win-border-shadow);
+  box-shadow: inset 1px 1px var(--win-border-light), 1px 1px var(--win-border-dark);
+  padding: 8px;
+  background: var(--ads-color-bg);
+}
+
+[data-skin="win95"] .text-muted { color: var(--ads-color-secondary); }
+[data-skin="win95"] .text-accent { color: var(--ads-color-primary); font-weight: bold; }
+
+/* Workbench Toast Overrides for Win95 readability */
+[data-skin="win95"] .ads-workbench-toast {
+  background: var(--ads-color-bg) !important;
+  color: var(--ads-color-text) !important;
+  border: 1px solid #000 !important;
+  box-shadow: inset 1px 1px #fff, 1px 1px #808080 !important;
+}
+[data-skin="win95"] .ads-workbench-toast__content {
+  color: var(--ads-color-text) !important;
+}
+[data-skin="win95"] .ads-workbench-toast__x {
+  color: var(--ads-color-text) !important;
+}
+[data-skin="win95"] .ads-workbench-toast__close {
+  background: var(--ads-color-bg) !important;
+  color: var(--ads-color-text) !important;
+  border: 1px solid #000 !important;
+  box-shadow: inset 1px 1px #fff, 1px 1px #808080 !important;
+}
+[data-skin="win95"] .ads-workbench-toast__close:hover {
+  background: var(--ads-color-primary) !important;
+  color: #ffffff !important;
+}
+
