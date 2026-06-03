@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import { Panel } from '../Panel';
 import { Button } from '../Button';
 import { Workbench, WorkbenchSubPanel, WorkbenchToast } from '../Workbench';
-import { ThemeSwitcher, type Skin } from '../ThemeSwitcher';
-
-export interface WorkbenchLayoutProps {
-  initialSkin?: Skin;
-}
 
 /**
  * WorkbenchLayout
@@ -15,9 +10,7 @@ export interface WorkbenchLayoutProps {
  * toggleable overlay sub-panels, and contextual notifications/toasts.
  * Adapts beautifully to mobile viewports with drawer toggles.
  */
-export const WorkbenchLayout: React.FC<WorkbenchLayoutProps> = ({ initialSkin = 'crt' }) => {
-  const [skin, setSkin] = useState<Skin>(initialSkin);
-  
+export const WorkbenchLayout: React.FC = () => {
   // State for sub-panels
   const [isLeftSubOpen, setIsLeftSubOpen] = useState(false);
   const [isRightSubOpen, setIsRightSubOpen] = useState(false);
@@ -49,11 +42,6 @@ export const WorkbenchLayout: React.FC<WorkbenchLayoutProps> = ({ initialSkin = 
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Panel title="Main Operations" eyebrow="Core Terminal">
         <p style={{ margin: 0, fontSize: '0.85rem' }}>This central stage holds key metrics, real-time analytics data logs, and options to live-swap the visual system contract.</p>
-        
-        <div style={{ marginTop: '1.5rem', padding: '1rem', border: '1px solid var(--ads-color-border)' }}>
-          <p style={{ margin: '0 0 0.75rem', fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--ads-color-secondary)' }}>Skin Swapping Engine</p>
-          <ThemeSwitcher skin={skin} onChange={setSkin} />
-        </div>
 
         <Button variant="primary" style={{ marginTop: '1.5rem' }} onClick={() => setIsCenterToastOpen(true)}>
           Trigger Viewport Toast
@@ -87,10 +75,10 @@ export const WorkbenchLayout: React.FC<WorkbenchLayoutProps> = ({ initialSkin = 
   );
 
   return (
-    <div data-skin={skin} className="ads-workbench-layout-container" style={{ background: 'var(--ads-color-bg)', minHeight: '100vh', boxSizing: 'border-box' }}>
+    <div className="ads-workbench-layout-container" style={{ background: 'var(--ads-color-bg)', minHeight: '100vh', boxSizing: 'border-box' }}>
       <Workbench 
         mobileTitle="ADS WORKBENCH"
-        mobileSubtitle={`${skin.toUpperCase()} ONLINE`}
+        mobileSubtitle="SYSTEM ONLINE"
         
         leftTitle="Primary Control"
         leftPanel={leftPanel}
@@ -164,3 +152,4 @@ export const WorkbenchLayout: React.FC<WorkbenchLayoutProps> = ({ initialSkin = 
     </div>
   );
 };
+
