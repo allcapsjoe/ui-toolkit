@@ -359,11 +359,11 @@ export const WorkspaceDashboard: React.FC = () => {
       {/* Keyboard legends */}
       <div style={{ marginTop: '2rem' }}>
         <KeyboardLegend 
-          legends={[
-            { keys: ['SKIN'], description: 'Toggle active themes UI variables' },
-            { keys: ['SLIDER'], description: 'Adjust live progress buffer value' },
-            { keys: ['LED'], description: 'Shift light statuses by clicking bulblet' },
-            { keys: ['CTRL+S'], description: 'Submit sandbox logs to server' }
+          items={[
+            { key: 'SKIN', action: 'Toggle active themes UI variables' },
+            { key: 'SLIDER', action: 'Adjust live progress buffer value' },
+            { key: 'LED', action: 'Shift light statuses by clicking bulblet' },
+            { key: 'CTRL+S', action: 'Submit sandbox logs to server' }
           ]}
         />
       </div>
