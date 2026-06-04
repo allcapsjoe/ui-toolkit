@@ -1,22 +1,23 @@
 /* ─────────────────────────────────────────────────────────────────────────
  * Captain Skin — ALLCAPS Design System (ADS)
  *
- * This file implements the ADS Theme Contract for the 'captain' skin.
+ * A premium, modern, dark-first UI theme designed with a restrained
+ * slate/zinc palette. Fuses developer precision with clean minimal styling.
  * Use [data-skin="captain"] on a parent element to apply.
  * ─────────────────────────────────────────────────────────────────────────*/
 
 [data-skin="captain"] {
   /* ── ADS Theme Contract ── */
-  --ads-color-bg:          #080c14; /* Deep Space Slate */
-  --ads-color-surface:     #0f172a; /* Slate Surface */
-  --ads-color-primary:     #00f2fe; /* Cyber Cyan */
-  --ads-color-secondary:   #7c3aed; /* Electric Violet */
-  --ads-color-text:        #f8fafc; /* Slate White */
-  --ads-color-text-muted:  #94a3b8; /* Cool Grey */
-  --ads-color-border:      #334155; /* Slate Border */
-  --ads-radius:            8px;
-  --ads-glow:              0 0 15px rgba(0, 242, 254, 0.25);
-  --ads-font-mono:         'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --ads-color-bg:          #09090b; /* Zinc 950 (Dark Canvas) */
+  --ads-color-surface:     #18181b; /* Zinc 900 (Surface Card) */
+  --ads-color-primary:     #fafafa; /* Zinc 50 (Crisp Active Element) */
+  --ads-color-secondary:   #a1a1aa; /* Zinc 400 (Secondary Accent) */
+  --ads-color-text:        #f4f4f5; /* Zinc 100 (Standard Text) */
+  --ads-color-text-muted:  #71717a; /* Zinc 500 (Muted Annotations) */
+  --ads-color-border:      #27272a; /* Zinc 800 (Clean Borders) */
+  --ads-radius:            6px;
+  --ads-glow:              0 1px 2px rgba(0, 0, 0, 0.35);
+  --ads-font-mono:         system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --ads-font-scale:        1.0;
 
   min-height:  100vh;
@@ -24,7 +25,7 @@
   color:       var(--ads-color-text);
   font-family: var(--ads-font-mono);
   font-size:   calc(14px * var(--ads-font-scale));
-  line-height: 1.6;
+  line-height: 1.5;
   box-sizing: border-box;
 }
 
@@ -32,15 +33,15 @@
 
 [data-skin="captain"] ::selection {
   background: var(--ads-color-primary);
-  color:      #000000;
+  color:      #09090b;
 }
 
 /* Scrollbars */
-[data-skin="captain"]::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-skin="captain"]::-webkit-scrollbar { width: 6px; height: 6px; }
 [data-skin="captain"]::-webkit-scrollbar-track { background: var(--ads-color-bg); }
 [data-skin="captain"]::-webkit-scrollbar-thumb { 
   background: var(--ads-color-border);
-  border-radius: 4px;
+  border-radius: 999px;
 }
 
 /* ── Elements ────────────────────────────────────────── */
@@ -48,31 +49,31 @@
 [data-skin="captain"] h1, 
 [data-skin="captain"] h2, 
 [data-skin="captain"] h3 {
-  color:          var(--ads-color-text);
+  color:          var(--ads-color-primary);
   font-family:    var(--ads-font-mono);
-  font-weight:    700;
-  letter-spacing: -0.02em;
+  font-weight:    600;
+  letter-spacing: -0.015em;
   margin-top:     0;
   margin-bottom:  1rem;
   text-transform: uppercase;
 }
 
 [data-skin="captain"] h1 {
-  font-size: 1.8rem;
-  border-bottom: 2px solid var(--ads-color-border);
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--ads-color-border);
   padding-bottom: 0.5rem;
 }
 
 [data-skin="captain"] a {
   color: var(--ads-color-primary);
   text-decoration: none;
-  transition: all 0.2s ease;
-  border-bottom: 1px dotted var(--ads-color-primary);
+  transition: all 0.15s ease;
+  border-bottom: 1px solid var(--ads-color-border);
 }
 
 [data-skin="captain"] a:hover {
-  color: var(--ads-color-text);
-  border-bottom-style: solid;
+  color: var(--ads-color-primary);
+  border-bottom-color: var(--ads-color-primary);
 }
 
 [data-skin="captain"] hr {
@@ -85,40 +86,39 @@
 
 [data-skin="captain"] button {
   font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 0.5rem 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  padding: 0.5rem 1rem;
   border-radius: var(--ads-radius);
   border: 1px solid var(--ads-color-border);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   text-transform: uppercase;
 }
 
 [data-skin="captain"] button.ads-button--primary {
-  background: linear-gradient(135deg, var(--ads-color-secondary) 0%, #4f46e5 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+  background: var(--ads-color-primary);
+  color: #09090b;
+  border: 1px solid var(--ads-color-primary);
 }
 
 [data-skin="captain"] button.ads-button--primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.45);
-  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  background: #e4e4e7; /* Zinc 200 */
+  border-color: #e4e4e7;
+  transform: translateY(-0.5px);
 }
 
 [data-skin="captain"] button.ads-button--outline {
   background: transparent;
-  color: var(--ads-color-primary);
-  border: 1px solid var(--ads-color-primary);
+  color: var(--ads-color-text);
+  border: 1px solid var(--ads-color-border);
 }
 
 [data-skin="captain"] button.ads-button--outline:hover {
-  background: rgba(0, 242, 254, 0.08);
-  transform: translateY(-1px);
-  box-shadow: var(--ads-glow);
+  background: rgba(255, 255, 255, 0.03);
+  border-color: #3f3f46; /* Zinc 700 */
+  transform: translateY(-0.5px);
 }
 
 [data-skin="captain"] button.ads-button--ghost {
@@ -129,28 +129,28 @@
 
 [data-skin="captain"] button.ads-button--ghost:hover {
   color: var(--ads-color-text);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 [data-skin="captain"] input, 
 [data-skin="captain"] select, 
 [data-skin="captain"] textarea {
-  background: #020617;
+  background: #09090b;
   border: 1px solid var(--ads-color-border);
   color: var(--ads-color-text);
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--ads-radius);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   outline: none;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 [data-skin="captain"] input:focus, 
 [data-skin="captain"] select:focus, 
 [data-skin="captain"] textarea:focus {
-  border-color: var(--ads-color-primary);
-  box-shadow: var(--ads-glow);
+  border-color: #3f3f46;
+  box-shadow: 0 0 0 2px rgba(250, 250, 250, 0.04);
 }
 
 /* ── Utility Classes ────────────────────────────────── */
@@ -160,7 +160,7 @@
   border-radius: var(--ads-radius);
   padding: 1.25rem;
   background: var(--ads-color-surface);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--ads-glow);
 }
 
 [data-skin="captain"] .text-muted { color: var(--ads-color-text-muted); }
