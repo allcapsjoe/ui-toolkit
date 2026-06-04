@@ -13,6 +13,8 @@ import { Checkbox } from '../components/Checkbox';
 import { KeyboardLegend } from '../components/KeyboardLegend';
 import { RadioGroup } from '../components/RadioGroup';
 import { Panel } from '../components/Panel';
+import { RetroAudio } from '../utils/audio';
+
 
 export const WorkspaceDashboard: React.FC = () => {
   const [skin, setSkin] = useState<Skin>('captain');
@@ -216,7 +218,6 @@ export const WorkspaceDashboard: React.FC = () => {
               <Toggle checked={toggleVal} onChange={(checked) => {
                 setToggleVal(checked);
                 // Call global audio mute/unmute
-                const { RetroAudio } = require('../utils/audio');
                 RetroAudio.setMute(!checked);
               }} />
             </div>
