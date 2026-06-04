@@ -83,8 +83,9 @@ export const Workbench: React.FC<WorkbenchProps> = ({
             onClick={() => toggleDrawer('left')}
             aria-label="Toggle Left Panel"
             aria-expanded={openDrawer === 'left'}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <span className="ads-workbench__emoji">ℹ️</span>
+            <Info size={18} />
           </button>
         </div>
         
@@ -101,8 +102,9 @@ export const Workbench: React.FC<WorkbenchProps> = ({
             onClick={() => toggleDrawer('right')}
             aria-label="Toggle Right Panel"
             aria-expanded={openDrawer === 'right'}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <span className="ads-workbench__emoji">🍔</span>
+            <Menu size={18} />
           </button>
         </div>
       </header>

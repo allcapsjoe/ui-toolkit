@@ -194,13 +194,16 @@ html, body {
   top: 50%;
   width: 85%;
   height: 85%;
-  background: var(--ads-color-surface, #1a1f26);
+  /* Layer solid background first, then surface color linear-gradient to prevent bleed-through of underlying content */
+  background: var(--ads-color-bg, #09090b);
+  background-image: linear-gradient(var(--ads-color-surface, #1a1f26), var(--ads-color-surface, #1a1f26));
   border: 1px solid var(--ads-color-primary, #39ff14);
   z-index: 100;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(8px);
 }
 
 .ads-workbench__sub-panel--left {
