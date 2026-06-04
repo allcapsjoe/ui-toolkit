@@ -10,6 +10,11 @@
       "types": "./src/index.ts",
       "import": "./src/index.ts"
     },
+    "./captain": {
+      "types": "./captain/index.tsx",
+      "import": "./captain/index.tsx"
+    },
+    "./captain/css": "./captain/captain.css",
     "./crt": {
       "types": "./crt/index.tsx",
       "import": "./crt/index.tsx"
@@ -52,6 +57,7 @@
     "./archive/css": "./archive/archive.css"
   },
   "files": [
+    "captain",
     "crt",
     "win95",
     "cyberpunk",

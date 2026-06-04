@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { themes } from 'storybook/theming';
+import '../captain/captain.css';
 import '../crt/crt.css';
 import '../win95/win95.css';
 import '../cyberpunk/cyberpunk.css';
@@ -25,10 +26,11 @@ const preview: Preview = {
     theme: {
       name: 'Theme',
       description: 'Global theme for components',
-      defaultValue: 'crt',
+      defaultValue: 'captain',
       toolbar: {
         icon: 'circlehollow',
         items: [
+          { value: 'captain', icon: 'mirror', title: 'Captain (Dark)' },
           { value: 'crt', icon: 'monitor', title: 'CRT' },
           { value: 'win95', icon: 'window', title: 'Win95' },
           { value: 'cyberpunk', icon: 'lightning', title: 'Cyberpunk' },

@@ -1,0 +1,167 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * Captain Skin — ALLCAPS Design System (ADS)
+ *
+ * This file implements the ADS Theme Contract for the 'captain' skin.
+ * Use [data-skin="captain"] on a parent element to apply.
+ * ─────────────────────────────────────────────────────────────────────────*/
+
+[data-skin="captain"] {
+  /* ── ADS Theme Contract ── */
+  --ads-color-bg:          #080c14; /* Deep Space Slate */
+  --ads-color-surface:     #0f172a; /* Slate Surface */
+  --ads-color-primary:     #00f2fe; /* Cyber Cyan */
+  --ads-color-secondary:   #7c3aed; /* Electric Violet */
+  --ads-color-text:        #f8fafc; /* Slate White */
+  --ads-color-text-muted:  #94a3b8; /* Cool Grey */
+  --ads-color-border:      #334155; /* Slate Border */
+  --ads-radius:            8px;
+  --ads-glow:              0 0 15px rgba(0, 242, 254, 0.25);
+  --ads-font-mono:         'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --ads-font-scale:        1.0;
+
+  min-height:  100vh;
+  background:  var(--ads-color-bg);
+  color:       var(--ads-color-text);
+  font-family: var(--ads-font-mono);
+  font-size:   calc(14px * var(--ads-font-scale));
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+/* ── Global Overrides ────────────────────────────────── */
+
+[data-skin="captain"] ::selection {
+  background: var(--ads-color-primary);
+  color:      #000000;
+}
+
+/* Scrollbars */
+[data-skin="captain"]::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-skin="captain"]::-webkit-scrollbar-track { background: var(--ads-color-bg); }
+[data-skin="captain"]::-webkit-scrollbar-thumb { 
+  background: var(--ads-color-border);
+  border-radius: 4px;
+}
+
+/* ── Elements ────────────────────────────────────────── */
+
+[data-skin="captain"] h1, 
+[data-skin="captain"] h2, 
+[data-skin="captain"] h3 {
+  color:          var(--ads-color-text);
+  font-family:    var(--ads-font-mono);
+  font-weight:    700;
+  letter-spacing: -0.02em;
+  margin-top:     0;
+  margin-bottom:  1rem;
+  text-transform: uppercase;
+}
+
+[data-skin="captain"] h1 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--ads-color-border);
+  padding-bottom: 0.5rem;
+}
+
+[data-skin="captain"] a {
+  color: var(--ads-color-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px dotted var(--ads-color-primary);
+}
+
+[data-skin="captain"] a:hover {
+  color: var(--ads-color-text);
+  border-bottom-style: solid;
+}
+
+[data-skin="captain"] hr {
+  border: none;
+  border-top: 1px solid var(--ads-color-border);
+  margin: 1.5rem 0;
+}
+
+/* ── Forms & Buttons ────────────────────────────────── */
+
+[data-skin="captain"] button {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--ads-radius);
+  border: 1px solid var(--ads-color-border);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+}
+
+[data-skin="captain"] button.ads-button--primary {
+  background: linear-gradient(135deg, var(--ads-color-secondary) 0%, #4f46e5 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
+}
+
+[data-skin="captain"] button.ads-button--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(124, 58, 237, 0.45);
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+}
+
+[data-skin="captain"] button.ads-button--outline {
+  background: transparent;
+  color: var(--ads-color-primary);
+  border: 1px solid var(--ads-color-primary);
+}
+
+[data-skin="captain"] button.ads-button--outline:hover {
+  background: rgba(0, 242, 254, 0.08);
+  transform: translateY(-1px);
+  box-shadow: var(--ads-glow);
+}
+
+[data-skin="captain"] button.ads-button--ghost {
+  background: transparent;
+  color: var(--ads-color-text-muted);
+  border: 1px solid transparent;
+}
+
+[data-skin="captain"] button.ads-button--ghost:hover {
+  color: var(--ads-color-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-skin="captain"] input, 
+[data-skin="captain"] select, 
+[data-skin="captain"] textarea {
+  background: #020617;
+  border: 1px solid var(--ads-color-border);
+  color: var(--ads-color-text);
+  padding: 0.5rem;
+  border-radius: var(--ads-radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+[data-skin="captain"] input:focus, 
+[data-skin="captain"] select:focus, 
+[data-skin="captain"] textarea:focus {
+  border-color: var(--ads-color-primary);
+  box-shadow: var(--ads-glow);
+}
+
+/* ── Utility Classes ────────────────────────────────── */
+
+[data-skin="captain"] .card {
+  border: 1px solid var(--ads-color-border);
+  border-radius: var(--ads-radius);
+  padding: 1.25rem;
+  background: var(--ads-color-surface);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+[data-skin="captain"] .text-muted { color: var(--ads-color-text-muted); }
+[data-skin="captain"] .text-accent { color: var(--ads-color-primary); font-weight: bold; }

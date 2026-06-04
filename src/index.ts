@@ -1,5 +1,6 @@
 export * from './components';
 
+export { CaptainLayout } from '../captain';
 export { ArchiveLayout } from '../archive';
 export { EinkLayout } from '../eink';
 export { NeonLayout } from '../neon';

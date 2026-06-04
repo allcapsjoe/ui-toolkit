@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type Skin = 'crt' | 'win95' | 'cyberpunk' | 'eink' | 'mainframe' | 'retro' | 'archive' | 'neon';
+export type Skin = 'captain' | 'crt' | 'win95' | 'cyberpunk' | 'eink' | 'mainframe' | 'retro' | 'archive' | 'neon';
 
 export interface ThemeSwitcherProps {
   skin: Skin;
@@ -10,6 +10,7 @@ export interface ThemeSwitcherProps {
 }
 
 const defaultSkins: Array<{ id: Skin; label: string }> = [
+  { id: 'captain',   label: 'DARK' },
   { id: 'crt',       label: 'CRT' },
   { id: 'win95',     label: '95' },
   { id: 'cyberpunk', label: 'CYBER' },
