@@ -37,11 +37,18 @@
 }
 
 /* Scrollbars */
-[data-skin="captain"]::-webkit-scrollbar { width: 6px; height: 6px; }
-[data-skin="captain"]::-webkit-scrollbar-track { background: var(--ads-color-bg); }
-[data-skin="captain"]::-webkit-scrollbar-thumb { 
+[data-skin="captain"]::-webkit-scrollbar,
+[data-skin="captain"] ::-webkit-scrollbar { width: 6px; height: 6px; }
+[data-skin="captain"]::-webkit-scrollbar-track,
+[data-skin="captain"] ::-webkit-scrollbar-track { background: var(--ads-color-bg); }
+[data-skin="captain"]::-webkit-scrollbar-thumb,
+[data-skin="captain"] ::-webkit-scrollbar-thumb { 
   background: var(--ads-color-border);
   border-radius: 999px;
+}
+[data-skin="captain"]::-webkit-scrollbar-thumb:hover,
+[data-skin="captain"] ::-webkit-scrollbar-thumb:hover { 
+  background: var(--ads-color-secondary);
 }
 
 /* ── Elements ────────────────────────────────────────── */
