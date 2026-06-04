@@ -39,11 +39,32 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story, context) => (
-      <div data-skin={context.globals.theme}>
-        <Story />
-      </div>
-    ),
+    (Story, context) => {
+      const isFullscreen = context.parameters.layout === 'fullscreen';
+      return (
+        <>
+          <style>{`
+            body {
+              margin: 0 !important;
+              padding: 0 !important;
+              background-color: #0d1117 !important;
+            }
+          `}</style>
+          <div 
+            data-skin={context.globals.theme}
+            style={{
+              minHeight: '100vh',
+              background: 'var(--ads-color-bg)',
+              color: 'var(--ads-color-text)',
+              padding: isFullscreen ? '0' : '1.5rem',
+              boxSizing: 'border-box'
+            }}
+          >
+            <Story />
+          </div>
+        </>
+      );
+    },
   ],
 };
 

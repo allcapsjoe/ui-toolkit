@@ -1,166 +1,403 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 
+import Github from "./assets/github.svg";
+import Discord from "./assets/discord.svg";
+import Youtube from "./assets/youtube.svg";
+import Tutorials from "./assets/tutorials.svg";
+import Styling from "./assets/styling.png";
+import Context from "./assets/context.png";
+import Assets from "./assets/assets.png";
+import Docs from "./assets/docs.png";
+import Share from "./assets/share.png";
+import FigmaPlugin from "./assets/figma-plugin.png";
+import Testing from "./assets/testing.png";
+import Accessibility from "./assets/accessibility.png";
+import Theming from "./assets/theming.png";
+import AddonLibrary from "./assets/addon-library.png";
+
+export const RightArrow = () => <svg 
+    viewBox="0 0 14 14" 
+    width="8px" 
+    height="14px" 
+    style={{ 
+      marginLeft: '6px',
+      display: 'inline-block',
+      shapeRendering: 'inherit',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      'path fill': 'currentColor'
+    }}
+>
+  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+</svg>
+
 <Meta title="Welcome" />
 
-<div className="ads-welcome">
-  <div className="ads-welcome__header">
-    <span className="ads-welcome__eyebrow">SYSTEM BOOT SUCCESS</span>
-    <h1 className="ads-welcome__title">ALLCAPS UI TOOLKIT // V1.0.0</h1>
-    <div className="ads-welcome__subtitle">
-      A multi-theme vintage style engine with highly tactile components and integrated Web Audio synthesis.
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Welcome to @allcapsjoe/ui-toolkit
+
+    Explore and configure your design system components, templates, and theme variables in this interactive Storybook. Use the Theme toolbar icon at the top of the screen to dynamically hot-swap themes.
+  </div>
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <img
+        src={Styling}
+        alt="A wall of logos representing different styling technologies"
+      />
+      <h4 className="sb-section-item-heading">Theme Styling Contract</h4>
+      <p className="sb-section-item-paragraph">Our styles are controlled by CSS custom variables. Toggle between CRT, Win95, Cyberpunk, and more using the Theme toolbar switcher.</p>
+      <a
+        className="sb-action-link"
+        href="https://github.com/ALLCAPSJOE/ui-toolkit"
+        target="_blank"
+      >GitHub Repository<RightArrow /></a>
+    </div>
+    <div className="sb-section-item">
+      <img
+        src={Context}
+        alt="An abstraction representing the composition of data for a component"
+      />
+      <h4 className="sb-section-item-heading">Layout & Structure</h4>
+      <p className="sb-section-item-paragraph">Learn to use visual primitives like Stack, Grid, and Panel to build mechanical layouts that scale smoothly.</p>
+      <a
+        className="sb-action-link"
+        href="/?path=/docs/structure-panel--docs"
+      >Explore Layouts<RightArrow /></a>
+    </div>
+    <div className="sb-section-item">
+      <img src={Assets} alt="A representation of typography and image assets" />
+      <div>
+        <h4 className="sb-section-item-heading">Integrated Audio Synth</h4>
+        <p className="sb-section-item-paragraph">Interactive controls contain built-in 8-bit sound synthesizers. Try clicking buttons in Storybook to hear tactile click beeps.</p>
+        <a
+          className="sb-action-link"
+          href="/?path=/docs/input-button--docs"
+        >Try Button Sounds<RightArrow /></a>
+      </div>
     </div>
   </div>
-
-  <div className="ads-welcome__grid">
-    <div className="ads-welcome__card">
-      <h3>🚀 Quick Start</h3>
-      <p>Import a layout component and its corresponding stylesheet into your application root:</p>
-      <pre>
-{`import { CrtLayout, Button } from '@allcapsjoe/ui-toolkit';
-import '@allcapsjoe/ui-toolkit/crt/css';
-
-function App() {
-  return (
-    <CrtLayout>
-      <Button>EXECUTE COMMAND</Button>
-    </CrtLayout>
-  );
-}`}
-      </pre>
-    </div>
-
-    <div className="ads-welcome__card">
-      <h3>🎮 Visual Themes</h3>
-      <p>Swappable skins implemented through pure CSS variable contracts. Switch themes instantly using the toolbar dropdown at the top of the Storybook screen:</p>
-      <ul>
-        <li><strong>CRT</strong>: Glowing green phosphor terminal.</li>
-        <li><strong>Win95</strong>: Classic gray bevel control blocks.</li>
-        <li><strong>Cyberpunk</strong>: Neon green and high contrast.</li>
-        <li><strong>E-Ink</strong>: Paper-like monochrome high contrast.</li>
-        <li><strong>Mainframe</strong>: Matte black IBM system terminal.</li>
-        <li><strong>Retro</strong>: 1970s solar red and warm cream.</li>
-        <li><strong>Neon</strong>: Deep space blue and cockpit magenta.</li>
-        <li><strong>Archive</strong>: Vintage library card catalog index.</li>
-      </ul>
-    </div>
-
-    <div className="ads-welcome__card">
-      <h3>🔊 Retro Sound Effects</h3>
-      <p>Integrated 8-bit audio feedback using native browser Web Audio synthesis (zero files to download). Buttons and interactives play mechanical clicks by default.</p>
-      <pre>
-{`import { RetroAudio } from '@allcapsjoe/ui-toolkit';
-
-// Play sound effects manually
-RetroAudio.play('confirm');
-RetroAudio.play('error');
-RetroAudio.play('boot');`}
-      </pre>
-    </div>
-
-    <div className="ads-welcome__card">
-      <h3>🧱 Toolkit Lego Bricks</h3>
-      <p>Contains 35 responsive components and layout templates designed for developer-centric prototyping:</p>
-      <ul>
-        <li><strong>Interactive Controls</strong>: Button, Toggle, Slider, Dropdowns, Checkbox, RadioGroup.</li>
-        <li><strong>High Flavor</strong>: Terminal, ProgressBar, LEDIndicator, KeyboardLegend.</li>
-        <li><strong>Structure</strong>: AppShell, Panel, Grid, Stack, Divider.</li>
-        <li><strong>Page Templates</strong>: HackerConsole, DesktopManager, DatabaseRecords, ControlSettings, SetupWizard, Workbench.</li>
-      </ul>
-    </div>
-  </div>
-
-  <style>{`
-    .ads-welcome {
-      font-family: 'Courier New', Courier, monospace;
-      padding: 2rem;
-      background: #0d150d;
-      color: #39ff14;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-    
-    .ads-welcome__header {
-      border-bottom: 2px solid #39ff14;
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .ads-welcome__eyebrow {
-      font-size: 0.75rem;
-      font-weight: bold;
-      letter-spacing: 0.15em;
-      color: #ff6b00;
-    }
-
-    .ads-welcome__title {
-      font-size: 2.2rem;
-      margin: 0.5rem 0;
-      font-weight: 800;
-      text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
-      text-transform: uppercase;
-    }
-
-    .ads-welcome__subtitle {
-      font-size: 0.95rem;
-      color: #8b949e;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .ads-welcome__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .ads-welcome__card {
-      border: 1px solid #39ff14;
-      padding: 1.25rem;
-      background: #060c06;
-      box-shadow: inset 0 0 10px rgba(57, 255, 20, 0.05);
-    }
-
-    .ads-welcome__card h3 {
-      margin-top: 0;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      color: #ff6b00;
-      border-bottom: 1px dashed #39ff14;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .ads-welcome__card p {
-      font-size: 0.85rem;
-      line-height: 1.5;
-      color: #c9d1d9;
-    }
-
-    .ads-welcome__card ul {
-      font-size: 0.85rem;
-      line-height: 1.6;
-      color: #c9d1d9;
-      padding-left: 1.2rem;
-    }
-
-    .ads-welcome__card li strong {
-      color: #39ff14;
-    }
-
-    .ads-welcome__card pre {
-      background: #000;
-      border: 1px solid #ff6b00;
-      padding: 0.75rem;
-      font-size: 0.75rem;
-      color: #39ff14;
-      overflow-x: auto;
-      margin: 1rem 0 0 0;
-    }
-
-    @media (max-width: 768px) {
-      .ads-welcome__grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  `}</style>
 </div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Do more with Storybook
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-features-grid">
+      <div className="sb-grid-item">
+        <img src={Docs} alt="A screenshot showing the autodocs tag being set, pointing a docs page being generated" />
+        <h4 className="sb-section-item-heading">Interactive Autodocs</h4>
+        <p className="sb-section-item-paragraph">Auto-generate living, interactive reference documentation from your components and stories.</p>
+      </div>
+      <div className="sb-grid-item">
+        <img src={Share} alt="A browser window showing a Storybook being published to a chromatic.com URL" />
+        <h4 className="sb-section-item-heading">Publish to Chromatic</h4>
+        <p className="sb-section-item-paragraph">Publish your Storybook to review and collaborate with your entire team.</p>
+      </div>
+      <div className="sb-grid-item">
+        <img src={FigmaPlugin} alt="Windows showing the Storybook plugin in Figma" />
+        <h4 className="sb-section-item-heading">Figma Plugin</h4>
+        <p className="sb-section-item-paragraph">Embed your stories into Figma to cross-reference design mockups and live implementations.</p>
+      </div>
+      <div className="sb-grid-item">
+        <img src={Testing} alt="Screenshot of tests passing and failing" />
+        <h4 className="sb-section-item-heading">Vitest Testing</h4>
+        <p className="sb-section-item-paragraph">Use stories to test components in all variations, fully integrated with Vitest browser mode.</p>
+      </div>
+      <div className="sb-grid-item">
+        <img src={Accessibility} alt="Screenshot of accessibility tests passing and failing" />
+        <h4 className="sb-section-item-heading">Accessibility (a11y)</h4>
+        <p className="sb-section-item-paragraph">Test component focus rings, touch targets, and contrast ratios automatically as you develop.</p>
+      </div>
+      <div className="sb-grid-item">
+        <img src={Theming} alt="Screenshot of Storybook in light and dark mode" />
+        <h4 className="sb-section-item-heading">High-Flavor Theming</h4>
+        <p className="sb-section-item-paragraph">Swappable layout designs with strict reduced-motion rules for typing animations and CRT scanlines.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className='sb-addon'>
+  <div className='sb-addon-text'>
+    <h4>Storybook Addons</h4>
+    <p className="sb-section-item-paragraph">Integrate developer tools with Storybook to speed up your component building workflows.</p>
+    <a
+        className="sb-action-link"
+        href="https://storybook.js.org/addons/?ref=configure"
+        target="_blank"
+      >Discover all addons<RightArrow /></a>
+  </div>
+  <div className='sb-addon-img'>
+    <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
+  </div>
+</div>
+
+<div className="sb-section sb-socials">
+    <div className="sb-section-item">
+      <img src={Github} alt="Github logo" className="sb-explore-image"/>
+      Join our contributors building the future of UI development.
+      <a
+        className="sb-action-link"
+        href="https://github.com/storybookjs/storybook"
+        target="_blank"
+      >Star on GitHub<RightArrow /></a>
+    </div>
+    <div className="sb-section-item">
+      <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
+      <div>
+        Get support and chat with frontend developers.
+        <a
+          className="sb-action-link"
+          href="https://discord.gg/storybook"
+          target="_blank"
+        >Join Discord server<RightArrow /></a>
+      </div>
+    </div>
+    <div className="sb-section-item">
+      <img src={Youtube} alt="Youtube logo" className="sb-explore-image"/>
+      <div>
+        Watch tutorials, previews and developer interviews.
+        <a
+          className="sb-action-link"
+          href="https://www.youtube.com/@chromaticui"
+          target="_blank"
+        >Watch on YouTube<RightArrow /></a>
+      </div>
+    </div>
+    <div className="sb-section-item">
+      <img src={Tutorials} alt="A book" className="sb-explore-image"/>
+      <p style={{ margin: '0 0 10px 0' }}>Follow guided walkthroughs for key component workflows.</p>
+      <a
+          className="sb-action-link"
+          href="https://storybook.js.org/tutorials/?ref=configure"
+          target="_blank"
+        >Discover tutorials<RightArrow /></a>
+    </div>
+</div>
+
+<style>
+  {`
+  body {
+    background-color: #0d1117 !important;
+    color: #c9d1d9 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
+  }
+
+  h1, h2, h3, h4 {
+    color: #39ff14 !important;
+    text-shadow: 0 0 4px rgba(57, 255, 20, 0.25) !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    text-transform: uppercase !important;
+  }
+
+  p, span, div {
+    color: #8b949e !important;
+  }
+
+  .sb-container {
+    margin-bottom: 48px;
+    background-color: #0d1117 !important;
+  }
+
+  .sb-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  .sb-section-title {
+    margin-bottom: 32px;
+  }
+
+  .sb-section a:not(h1 a, h2 a, h3 a) {
+    font-size: 14px;
+  }
+
+  .sb-section-item, .sb-grid-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #161b22 !important;
+    border: 1px solid #30363d !important;
+    border-radius: 6px !important;
+    padding: 1.5rem !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .sb-section-item:hover, .sb-grid-item:hover {
+    border-color: #39ff14 !important;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.15) !important;
+  }
+
+  .sb-section-item img, .sb-grid-item img {
+    border-radius: 4px;
+    border: 1px solid #30363d;
+  }
+
+  .sb-section-item-heading {
+    padding-top: 16px !important;
+    padding-bottom: 8px !important;
+    margin: 0 !important;
+  }
+  
+  .sb-section-item-paragraph {
+    margin: 0 !important;
+    padding-bottom: 12px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .sb-action-link {
+    text-decoration: none !important;
+    color: #58a6ff !important;
+    font-weight: bold !important;
+  }
+
+  .sb-action-link:hover, .sb-action-link:focus {
+    text-decoration: underline !important;
+    color: #39ff14 !important;
+  }
+
+  .sb-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px 20px;
+    width: 100%;
+  }
+
+  .sb-socials {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 24px;
+  }
+
+  .sb-socials .sb-section-item {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0.5rem !important;
+  }
+  
+  .sb-socials .sb-section-item:hover {
+    box-shadow: none !important;
+  }
+
+  .sb-explore-image {
+    max-height: 32px;
+    align-self: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .sb-addon {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #161b22 !important;
+    border-radius: 6px !important;
+    border: 1px solid #30363d !important;
+    height: 180px;
+    margin-bottom: 48px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .sb-addon:hover {
+    border-color: #39ff14 !important;
+  }
+
+  .sb-addon-text {
+    padding-left: 48px;
+    max-width: 240px;
+    z-index: 10;
+  }
+
+  .sb-addon-text h4 {
+    padding-top: 0px;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .sb-addon-text p {
+    font-size: 0.85rem !important;
+    margin: 0 0 12px 0 !important;
+  }
+
+  .sb-addon-img {
+    position: absolute;
+    left: 345px;
+    top: 0;
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+  }
+
+  .sb-addon-img img {
+    width: 650px;
+    transform: rotate(-15deg);
+    margin-left: 40px;
+    margin-top: -72px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    backface-visibility: hidden;
+    border: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    .sb-addon-img {
+      left: 300px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .sb-section {
+      flex-direction: column;
+    }
+
+    .sb-features-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sb-socials {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sb-addon {
+      height: 280px;
+      align-items: flex-start;
+      padding-top: 32px;
+      overflow: hidden;
+    }
+
+    .sb-addon-text {
+      padding-left: 24px;
+    }
+
+    .sb-addon-img {
+      right: 0;
+      left: 0;
+      top: 130px;
+      bottom: 0;
+      overflow: hidden;
+      height: auto;
+      width: 124%;
+    }
+
+    .sb-addon-img img {
+      width: 1200px;
+      transform: rotate(-12deg);
+      margin-left: 0;
+      margin-top: 48px;
+      margin-bottom: -40px;
+      margin-left: -24px;
+    }
+  }
+  `}
+</style>
