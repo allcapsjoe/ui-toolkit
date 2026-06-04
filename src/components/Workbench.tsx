@@ -1,6 +1,59 @@
 import React, { useState, type ReactNode } from 'react';
-import { Info, Menu, X } from 'lucide-react';
 import './Workbench.css';
+
+const InfoIcon = ({ size = 18 }: { size?: number }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    width={size} 
+    height={size} 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    className="ads-workbench__svg-icon"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="16" x2="12" y2="12" />
+    <line x1="12" y1="8" x2="12.01" y2="8" />
+  </svg>
+);
+
+const MenuIcon = ({ size = 18 }: { size?: number }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    width={size} 
+    height={size} 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    className="ads-workbench__svg-icon"
+  >
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);
+
+const CloseIcon = ({ size = 16 }: { size?: number }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    width={size} 
+    height={size} 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    fill="none" 
+    strokeLinecap="round" 
+    strokeLinejoin="round"
+    className="ads-workbench__svg-icon"
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
 
 export interface WorkbenchToastProps {
   message: ReactNode;
@@ -85,7 +138,7 @@ export const Workbench: React.FC<WorkbenchProps> = ({
             aria-expanded={openDrawer === 'left'}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <Info size={18} />
+            <InfoIcon size={18} />
           </button>
         </div>
         
@@ -104,7 +157,7 @@ export const Workbench: React.FC<WorkbenchProps> = ({
             aria-expanded={openDrawer === 'right'}
             style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
-            <Menu size={18} />
+            <MenuIcon size={18} />
           </button>
         </div>
       </header>
@@ -208,7 +261,7 @@ export const WorkbenchSubPanel: React.FC<WorkbenchSubPanelProps> = ({ isOpen, on
     <div className="ads-sub-panel">
       <header className="ads-sub-panel__header">
         <h3>{title || 'Sub-Panel'}</h3>
-        <button onClick={onClose} className="ads-sub-panel__close"><X size={16} /></button>
+        <button onClick={onClose} className="ads-sub-panel__close"><CloseIcon size={16} /></button>
       </header>
       <div className="ads-sub-panel__body">
         {children}
@@ -225,7 +278,7 @@ export const WorkbenchToast: React.FC<WorkbenchToastProps> = ({ message, onDismi
   return (
     <div className="ads-workbench-toast">
       <button onClick={onDismiss} className="ads-workbench-toast__x" aria-label="Close notification">
-        <X size={16} />
+        <CloseIcon size={16} />
       </button>
       <div className="ads-workbench-toast__content">{message}</div>
       <button onClick={onDismiss} className="ads-workbench-toast__close">Dismiss</button>
