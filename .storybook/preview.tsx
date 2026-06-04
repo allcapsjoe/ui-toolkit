@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import { themes } from 'storybook/theming';
 import '../crt/crt.css';
 import '../win95/win95.css';
 import '../cyberpunk/cyberpunk.css';
@@ -15,6 +16,9 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    docs: {
+      theme: themes.dark,
     },
   },
   globalTypes: {
