@@ -1,5 +1,7 @@
 import React, { useState, type ReactNode } from 'react';
+import { IconButton } from './IconButton';
 import './Workbench.css';
+
 
 const InfoIcon = ({ size = 18 }: { size?: number }) => (
   <svg 
@@ -130,16 +132,14 @@ export const Workbench: React.FC<WorkbenchProps> = ({
       {/* App Bar - Grid layout for perfect alignment */}
       <header className="ads-workbench__appbar">
         <div className="ads-workbench__appbar-start">
-          <button
-            type="button"
-            className="ads-workbench__icon-button"
+          <IconButton
+            variant="outline"
+            icon={<InfoIcon size={18} />}
             onClick={() => toggleDrawer('left')}
             aria-label="Toggle Left Panel"
             aria-expanded={openDrawer === 'left'}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <InfoIcon size={18} />
-          </button>
+            className="ads-workbench__icon-button"
+          />
         </div>
         
         <div className="ads-workbench__title-group">
@@ -149,16 +149,14 @@ export const Workbench: React.FC<WorkbenchProps> = ({
 
         <div className="ads-workbench__appbar-end">
           {appBarActions && <div className="ads-workbench__appbar-actions">{appBarActions}</div>}
-          <button
-            type="button"
-            className="ads-workbench__icon-button"
+          <IconButton
+            variant="outline"
+            icon={<MenuIcon size={18} />}
             onClick={() => toggleDrawer('right')}
             aria-label="Toggle Right Panel"
             aria-expanded={openDrawer === 'right'}
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            <MenuIcon size={18} />
-          </button>
+            className="ads-workbench__icon-button"
+          />
         </div>
       </header>
 
