@@ -172,3 +172,29 @@
 
 [data-skin="captain"] .text-muted { color: var(--ads-color-text-muted); }
 [data-skin="captain"] .text-accent { color: var(--ads-color-primary); font-weight: bold; }
+
+[data-skin="captain"] .ads-workbench__icon-button {
+  background: var(--ads-color-surface) !important;
+  border: 1px solid var(--ads-color-border) !important;
+  color: var(--ads-color-text) !important;
+  border-radius: var(--ads-radius) !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+[data-skin="captain"] .ads-workbench__icon-button:hover {
+  border-color: var(--ads-color-primary) !important;
+  color: var(--ads-color-primary) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+[data-skin="captain"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
+}

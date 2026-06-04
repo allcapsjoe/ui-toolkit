@@ -79,3 +79,27 @@
   color: #000000 !important;
 }
 
+[data-skin="mainframe"] .ads-workbench__icon-button {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 0px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-skin="mainframe"] .ads-workbench__icon-button:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+[data-skin="mainframe"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
+}
+

@@ -51,9 +51,33 @@
 }
 
 [data-skin="eink"] .ads-workbench__icon-button {
-  color: #000 !important;
-  border-color: #000 !important;
-  background: transparent !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 0px !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-skin="eink"] .ads-workbench__icon-button:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-skin="eink"] .ads-workbench__icon-button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: none !important;
+}
+
+[data-skin="eink"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2.5px !important;
 }
 
 [data-skin="eink"] .ads-workbench__title {

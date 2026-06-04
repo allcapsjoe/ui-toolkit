@@ -133,3 +133,27 @@
   color: #ffffff !important;
 }
 
+[data-skin="win95"] .ads-workbench__icon-button {
+  background: var(--ads-color-bg) !important;
+  color: var(--ads-color-text) !important;
+  border: 1px solid var(--win-border-shadow) !important;
+  box-shadow: inset 1.5px 1.5px var(--win-border-light), 1.5px 1.5px var(--win-border-dark) !important;
+  border-radius: 0px !important;
+  width: 32px !important;
+  height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-skin="win95"] .ads-workbench__icon-button:active {
+  box-shadow: inset 1.5px 1.5px var(--win-border-shadow), inset -1.5px -1.5px var(--win-border-light) !important;
+  padding: 1px 0 0 1px !important;
+}
+
+[data-skin="win95"] .ads-workbench__icon-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: var(--ads-color-text) !important;
+}
+

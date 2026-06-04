@@ -298,3 +298,32 @@
 [data-skin="neon"] .ads-workbench-toast__close:hover {
   box-shadow: 0 0 12px rgba(252, 60, 255, 0.4) !important;
 }
+
+[data-skin="neon"] .ads-workbench__icon-button {
+  background: rgba(24, 240, 200, 0.05) !important;
+  border: 1px solid rgba(24, 240, 200, 0.3) !important;
+  color: var(--ads-color-primary) !important;
+  box-shadow: 0 0 8px rgba(24, 240, 200, 0.15) !important;
+  border-radius: var(--ads-radius) !important;
+  width: 38px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+[data-skin="neon"] .ads-workbench__icon-button:hover {
+  background: rgba(24, 240, 200, 0.15) !important;
+  border-color: var(--ads-color-primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(24, 240, 200, 0.25) !important;
+  transform: translateY(-1px) !important;
+}
+
+[data-skin="neon"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
+}

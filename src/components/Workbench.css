@@ -96,13 +96,16 @@ html, body {
   border-radius: 4px;
   pointer-events: auto;
   transition: all 0.2s ease;
-  font-size: 18px; /* For emojis */
   line-height: 1;
 }
 
-.ads-workbench__emoji {
+.ads-workbench__icon-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
   display: block;
-  user-select: none;
 }
 
 

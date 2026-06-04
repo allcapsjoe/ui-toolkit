@@ -357,3 +357,27 @@
   border-color: var(--ads-color-secondary) !important;
 }
 
+[data-skin="archive"] .ads-workbench__icon-button {
+  background: transparent !important;
+  color: var(--ads-color-primary) !important;
+  border: 2px solid var(--ads-color-primary) !important;
+  border-radius: 0px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-skin="archive"] .ads-workbench__icon-button:hover {
+  background: var(--ads-color-primary) !important;
+  color: #ffffff !important;
+}
+
+[data-skin="archive"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2.5px !important;
+}
+

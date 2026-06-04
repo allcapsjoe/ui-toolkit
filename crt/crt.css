@@ -193,8 +193,29 @@
 
 [data-skin="crt"] .ads-workbench__icon-button {
   color: var(--ads-color-primary) !important;
-  border-color: var(--ads-color-primary) !important;
+  border: 1px solid var(--ads-color-primary) !important;
   background: rgba(57, 255, 20, 0.05) !important;
+  box-shadow: var(--ads-glow) !important;
+  filter: var(--ads-aberration) !important;
+  border-radius: 0px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-skin="crt"] .ads-workbench__icon-button:hover {
+  background: var(--ads-color-primary) !important;
+  color: var(--ads-color-bg) !important;
+  box-shadow: 0 0 15px var(--ads-color-primary) !important;
+}
+
+[data-skin="crt"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
 }
 
 [data-skin="crt"] .ads-workbench__title {

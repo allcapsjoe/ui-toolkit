@@ -663,3 +663,34 @@
   background: var(--ads-color-primary) !important;
   color: #FAF4E8 !important;
 }
+
+[data-skin="retro"] .ads-workbench__icon-button {
+  background: var(--ads-color-bg) !important;
+  color: var(--ads-color-text) !important;
+  border: 3px solid var(--ads-color-border) !important;
+  border-radius: var(--ads-radius) !important;
+  width: 44px !important;
+  height: 44px !important;
+  box-shadow: 3px 3px 0px var(--ads-color-border) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.1s, box-shadow 0.1s !important;
+}
+
+[data-skin="retro"] .ads-workbench__icon-button:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 5px 5px 0px var(--ads-color-border) !important;
+}
+
+[data-skin="retro"] .ads-workbench__icon-button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0px var(--ads-color-border) !important;
+}
+
+[data-skin="retro"] .ads-workbench__icon-button svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: var(--ads-color-text) !important;
+  stroke-width: 2.5px !important;
+}

@@ -57,9 +57,32 @@
 }
 
 [data-skin="cyberpunk"] .ads-workbench__icon-button {
-  color: var(--ads-color-primary) !important;
-  border-color: var(--ads-color-primary) !important;
-  background: rgba(0, 255, 242, 0.1) !important;
+  color: #00fff2 !important;
+  border: 1px solid #00fff2 !important;
+  background: rgba(0, 255, 242, 0.08) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 242, 0.3) !important;
+  border-radius: 4px !important;
+  width: 38px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+[data-skin="cyberpunk"] .ads-workbench__icon-button:hover {
+  color: #ff0055 !important;
+  border-color: #ff0055 !important;
+  background: rgba(255, 0, 85, 0.1) !important;
+  box-shadow: 0 0 12px rgba(255, 0, 85, 0.5) !important;
+  transform: translateY(-1px) scale(1.05) !important;
+}
+
+[data-skin="cyberpunk"] .ads-workbench__icon-button svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: currentColor !important;
+  stroke-width: 2px !important;
 }
 
 [data-skin="cyberpunk"] .ads-workbench__title {
