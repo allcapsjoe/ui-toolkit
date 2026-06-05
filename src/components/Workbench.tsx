@@ -1,4 +1,4 @@
-import React, { useState, type ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import { IconButton } from './IconButton';
 import './Workbench.css';
 
@@ -120,6 +120,14 @@ export const Workbench: React.FC<WorkbenchProps> = ({
   className = '',
 }) => {
   const [openDrawer, setOpenDrawer] = useState<'left' | 'right' | null>(null);
+
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   const toggleDrawer = (side: 'left' | 'right') => {
     setOpenDrawer(prev => prev === side ? null : side);
