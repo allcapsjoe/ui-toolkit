@@ -1,0 +1,136 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { RetroAudioConsole } from "./RetroAudioConsole";
+
+<Meta title="Utilities/RetroAudio" />
+
+<div className="ads-welcome-workspace">
+  <div className="ads-workspace__header">
+    <div className="ads-workspace__meta">ALLCAPSJOE // SOUND_ENGINE</div>
+    <h1 className="ads-workspace__title">RetroAudio Synthesizer</h1>
+    <p className="ads-workspace__subtitle">
+      A browser-native Web Audio API synthesizer generating 8-bit sound effects dynamically without loading external audio assets.
+    </p>
+  </div>
+
+  {/* Interactive Test Console */}
+  <div style={{ marginBottom: '2rem' }}>
+    <RetroAudioConsole />
+  </div>
+
+  {/* API Documentation Details */}
+  <div className="ads-workspace__grid">
+    <div className="ads-workspace__panel">
+      <h3>🚀 Quick Start & Integration</h3>
+      <p>By default, interactive controls like <code>Button</code>, <code>Toggle</code>, and <code>Slider</code> play synthesizer click sound effects on click/drag. You can control this behavior globally.</p>
+      
+      <pre>
+{`import { RetroAudio } from '@allcapsjoe/ui-toolkit';
+
+// Trigger preset sounds directly in code
+RetroAudio.play('click');
+RetroAudio.play('confirm');
+
+// Mute all audio triggers globally
+RetroAudio.setMute(true);`}
+      </pre>
+    </div>
+
+    <div className="ads-workspace__panel">
+      <h3>📋 Methods Specification</h3>
+      
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontSize: '0.85rem' }}>
+        <div>
+          <strong style={{ color: 'var(--ads-color-primary)' }}>play(preset: SoundPreset): void</strong>
+          <p style={{ margin: '4px 0 0 0', color: 'var(--ads-color-text-muted)' }}>Plays a pre-tuned retro tone envelope. Mapped presets: <code>'click'</code>, <code>'confirm'</code>, <code>'error'</code>, <code>'boot'</code>, and <code>'chime'</code>.</p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', borderTop: '1px dashed var(--ads-color-border)', paddingTop: '0.5rem' }}>
+          <strong style={{ color: 'var(--ads-color-primary)' }}>playTone(freq: number, duration: number, type: OscillatorType, volume: number): void</strong>
+          <p style={{ margin: '4px 0 0 0', color: 'var(--ads-color-text-muted)' }}>Trigger custom synthesis. Configure frequencies, durations (seconds), volume level, and wave type (<code>'sine' | 'square' | 'sawtooth' | 'triangle'</code>).</p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', borderTop: '1px dashed var(--ads-color-border)', paddingTop: '0.5rem' }}>
+          <strong style={{ color: 'var(--ads-color-primary)' }}>setMute(isMuted: boolean): void</strong>
+          <p style={{ margin: '4px 0 0 0', color: 'var(--ads-color-text-muted)' }}>Sets the global mute state. If muted, all audio synthesizers bypass play calls.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>{`
+    .ads-welcome-workspace {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: #09090b;
+      color: #f4f4f5;
+      padding: 2.5rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .ads-workspace__header {
+      border-bottom: 1px solid #27272a;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .ads-workspace__meta {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #a1a1aa;
+      letter-spacing: 0.15em;
+    }
+
+    .ads-workspace__title {
+      font-size: 1.8rem;
+      color: #fafafa !important;
+      margin: 0.5rem 0 0.25rem 0;
+      font-weight: 700;
+    }
+
+    .ads-workspace__subtitle {
+      font-size: 0.9rem;
+      color: #71717a !important;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .ads-workspace__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .ads-workspace__panel {
+      border: 1px solid #27272a;
+      background-color: #18181b;
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .ads-workspace__panel h3 {
+      font-size: 1rem;
+      margin: 0 0 1rem 0;
+      color: #fafafa !important;
+      border-bottom: 1px dashed #27272a;
+      padding-bottom: 0.5rem;
+    }
+
+    .ads-workspace__panel p {
+      font-size: 0.85rem;
+      color: #a1a1aa !important;
+      line-height: 1.5;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .ads-workspace__panel pre {
+      background-color: #09090b;
+      border: 1px solid #27272a;
+      padding: 0.75rem;
+      color: #f4f4f5;
+      font-size: 0.75rem;
+      overflow-x: auto;
+      margin: 0.5rem 0 0.25rem 0;
+    }
+  `}</style>
+</div>
