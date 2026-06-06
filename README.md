@@ -97,31 +97,4 @@ We provide 5 ready-to-use page layouts built entirely with the components:
 * Run Storybook: `npm run storybook`
 * Run Tests: `npm run test`
 
----
 
-## 🤖 AI Agent Instruction Blueprint
-
-When using this toolkit in external projects, copy-paste this prompt into your coding assistant (e.g. Cursor, Claude, Gemini) so it builds layout interfaces using the correct conventions:
-
-```markdown
-You are building a custom React component using the **ALLCAPS UI Toolkit (@allcapsjoe/ui-toolkit)**. 
-Follow these guidelines to inherit themes correctly:
-
-### 1. Theme CSS Variable Contract
-NEVER hardcode hex, rgb, or hsl values. Use the visual custom properties:
-- `--ads-color-bg`: Canvas background.
-- `--ads-color-surface`: Sub-containers, inputs, or panel backgrounds.
-- `--ads-color-primary`: Main action/highlight color.
-- `--ads-color-secondary`: Alternative highlight accents.
-- `--ads-color-text`: Primary body text.
-- `--ads-color-text-muted`: Dimmed text.
-- `--ads-color-border`: Default border styling.
-- `--ads-radius`: Border radius (often 0px).
-- `--ads-glow`: Box-shadow properties for glowing states.
-- `--ads-font-mono`: Core monospaced typography.
-
-### 2. General Rules
-- Always use uppercase (`text-transform: uppercase`) for button labels and navigation items.
-- Utilize `<Stack>` or `<Grid>` layouts for layout structures.
-- Import components directly: `import { Button, Panel } from '@allcapsjoe/ui-toolkit'`.
-```
