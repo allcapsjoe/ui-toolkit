@@ -15,7 +15,6 @@ import { RadioGroup } from '../components/RadioGroup';
 import { Panel } from '../components/Panel';
 import { RetroAudio } from '../utils/audio';
 
-
 export const WorkspaceDashboard: React.FC = () => {
   const [skin, setSkin] = useState<Skin>('captain');
   const [sliderVal, setSliderVal] = useState<number>(65);
@@ -26,9 +25,21 @@ export const WorkspaceDashboard: React.FC = () => {
   const [isBlinking, setIsBlinking] = useState<boolean>(true);
   const [customVars, setCustomVars] = useState<Record<string, string>>({});
   
+  // Dynamic logger state
+  const [systemLogs, setSystemLogs] = useState<string[]>([
+    '[SYSTEM ONLINE] Ready for connection.',
+    '[INFO] Select a theme switcher skin to shift UI design tokens.'
+  ]);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Read computed variables to display in the Token Inspector live
+  // Helper to add timestamped logs to the feed
+  const addLog = (message: string) => {
+    const time = new Date().toLocaleTimeString();
+    setSystemLogs(prev => [`[${time}] ${message}`, ...prev].slice(0, 5));
+  };
+
+  // Read computed CSS variables to display in the Token Inspector live
   useEffect(() => {
     if (containerRef.current) {
       const styles = getComputedStyle(containerRef.current);
@@ -50,10 +61,64 @@ export const WorkspaceDashboard: React.FC = () => {
     }
   }, [skin]);
 
+  const handleSkinChange = (newSkin: Skin) => {
+    setSkin(newSkin);
+    RetroAudio.play('confirm');
+    addLog(`Skin changed to: ${newSkin.toUpperCase()}`);
+  };
+
   const toggleLedColor = () => {
     const colors: Array<'success' | 'warning' | 'error' | 'primary'> = ['success', 'warning', 'error', 'primary'];
     const nextIdx = (colors.indexOf(ledColor) + 1) % colors.length;
-    setLedColor(colors[nextIdx]);
+    const nextColor = colors[nextIdx];
+    setLedColor(nextColor);
+    RetroAudio.play('click');
+    addLog(`LED color shifted to ${nextColor.toUpperCase()}`);
+  };
+
+  const handleBlinkingChange = (checked: boolean) => {
+    setIsBlinking(checked);
+    RetroAudio.play('click');
+    addLog(`LED Blinking: ${checked ? 'ON' : 'OFF'}`);
+  };
+
+  const handleSliderChange = (val: number) => {
+    setSliderVal(val);
+    // Dynamic synth pitch based on slider position
+    RetroAudio.playTone(180 + val * 2, 0.03, 'triangle', 0.05);
+  };
+
+  // Log slider value updates on drag release/change
+  useEffect(() => {
+    addLog(`Buffer ratio adjusted: ${sliderVal}%`);
+  }, [sliderVal]);
+
+  const handleRadioChange = (val: string) => {
+    setRadioVal(val);
+    RetroAudio.play('click');
+    addLog(`Dial frequency band: ${val.toUpperCase()}`);
+  };
+
+  const handleExecute = () => {
+    RetroAudio.play('chime');
+    addLog('SYSTEM COMMAND 0x21 RUN: PORTAL RE-SYNCHRONIZED');
+  };
+
+  const handleReload = () => {
+    RetroAudio.play('boot');
+    setInputText('DEFAULT_RECOVERY_KEY');
+    setSliderVal(65);
+    setLedColor('success');
+    setIsBlinking(true);
+    setRadioVal('med');
+    addLog('System cold reboot initiated.');
+  };
+
+  const handleAudioToggle = (checked: boolean) => {
+    setToggleVal(checked);
+    RetroAudio.setMute(!checked);
+    RetroAudio.play('confirm');
+    addLog(`Audio Engine: ${checked ? 'ENABLED' : 'MUTED'}`);
   };
 
   return (
@@ -70,6 +135,65 @@ export const WorkspaceDashboard: React.FC = () => {
         boxSizing: 'border-box'
       }}
     >
+      {/* Custom Styles block for Premium Feel */}
+      <style>{`
+        .ads-dashboard-card {
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid var(--ads-color-border) !important;
+        }
+        .ads-dashboard-card:hover {
+          transform: translateY(-2px);
+          border-color: var(--ads-color-primary) !important;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+        .ads-catalog-grid-box {
+          background: rgba(0, 0, 0, 0.15);
+          padding: 1.25rem;
+          border: 1px solid var(--ads-color-border);
+          border-radius: var(--ads-radius, 4px);
+          transition: all 0.25s ease;
+        }
+        .ads-catalog-grid-box:hover {
+          border-color: var(--ads-color-primary) !important;
+          background: rgba(0, 0, 0, 0.25);
+        }
+        .ads-catalog-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .ads-catalog-list-item {
+          padding: 0.25rem 0;
+          font-size: 0.8rem;
+          color: var(--ads-color-text-muted, #a1a1aa);
+          transition: all 0.15s ease;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .ads-catalog-list-item:hover {
+          color: var(--ads-color-primary) !important;
+          padding-left: 4px;
+          cursor: pointer;
+        }
+        .ads-catalog-list-item::before {
+          content: '•';
+          color: var(--ads-color-text-muted);
+        }
+        .ads-catalog-list-item:hover::before {
+          content: '>';
+          color: var(--ads-color-primary);
+        }
+        .ads-glow-pulse {
+          animation: ads-pulse 4s infinite ease-in-out;
+        }
+        @keyframes ads-pulse {
+          0% { text-shadow: 0 0 2px rgba(255, 255, 255, 0.1); }
+          50% { text-shadow: 0 0 8px var(--ads-color-primary); }
+          100% { text-shadow: 0 0 2px rgba(255, 255, 255, 0.1); }
+        }
+      `}</style>
+
       {/* HUD Header Panel */}
       <div 
         style={{
@@ -87,7 +211,7 @@ export const WorkspaceDashboard: React.FC = () => {
           <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--ads-color-secondary)', letterSpacing: '0.2em' }}>
             ALLCAPSJOE // WORKSPACE_PORTAL
           </div>
-          <h1 style={{ fontSize: '2rem', margin: '0.5rem 0 0.25rem 0', fontWeight: '800', color: 'var(--ads-color-primary)' }}>
+          <h1 className="ads-glow-pulse" style={{ fontSize: '2rem', margin: '0.5rem 0 0.25rem 0', fontWeight: '800', color: 'var(--ads-color-primary)' }}>
             CAPTAIN DECK
           </h1>
           <p style={{ fontSize: '0.9rem', color: 'var(--ads-color-text-muted)', margin: 0 }}>
@@ -100,7 +224,7 @@ export const WorkspaceDashboard: React.FC = () => {
           <span style={{ fontSize: '0.7rem', color: 'var(--ads-color-text-muted)', fontWeight: 'bold', letterSpacing: '0.05em' }}>
             SELECT ACTIVE ENGINE SKIN:
           </span>
-          <ThemeSwitcher skin={skin} onChange={(s) => setSkin(s)} />
+          <ThemeSwitcher skin={skin} onChange={handleSkinChange} />
         </div>
       </div>
 
@@ -114,7 +238,7 @@ export const WorkspaceDashboard: React.FC = () => {
         }}
       >
         {/* Interactive Live Sandbox */}
-        <Panel title="🕹️ LIVE SANDBOX & TAC-PLAYGROUND" eyebrow="CONTROL BOARD">
+        <Panel className="ads-dashboard-card" title="🕹️ LIVE SANDBOX & TAC-PLAYGROUND" eyebrow="CONTROL BOARD">
           <p style={{ fontSize: '0.85rem', color: 'var(--ads-color-text-muted)', marginBottom: '1.5rem' }}>
             Interact with live React components styled natively by the active skin variables. Buttons trigger synthesized clicks.
           </p>
@@ -128,7 +252,12 @@ export const WorkspaceDashboard: React.FC = () => {
                 </label>
                 <TextInput 
                   value={inputText} 
-                  onChange={(e) => setInputText(e.target.value)} 
+                  onChange={(e) => {
+                    setInputText(e.target.value);
+                    if (e.target.value.length % 5 === 0) {
+                      addLog(`Input field buffer update: "${e.target.value}"`);
+                    }
+                  }} 
                   placeholder="Enter system frequency..."
                 />
               </div>
@@ -141,7 +270,7 @@ export const WorkspaceDashboard: React.FC = () => {
                   min={0} 
                   max={100} 
                   value={sliderVal} 
-                  onChange={(val) => setSliderVal(val)} 
+                  onChange={handleSliderChange} 
                 />
               </div>
 
@@ -152,7 +281,7 @@ export const WorkspaceDashboard: React.FC = () => {
                 <RadioGroup
                   name="sandbox-radio"
                   value={radioVal}
-                  onChange={(val) => setRadioVal(val)}
+                  onChange={handleRadioChange}
                   options={[
                     { value: 'low', label: 'LOW_BAND' },
                     { value: 'med', label: 'MED_BAND' },
@@ -179,7 +308,7 @@ export const WorkspaceDashboard: React.FC = () => {
                   <div style={{ marginLeft: 'auto' }}>
                     <Toggle 
                       checked={isBlinking} 
-                      onChange={(checked) => setIsBlinking(checked)} 
+                      onChange={handleBlinkingChange} 
                     />
                   </div>
                 </div>
@@ -196,36 +325,33 @@ export const WorkspaceDashboard: React.FC = () => {
                 <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
                   SYSTEM LOG FEED:
                 </label>
-                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '0.5rem', borderRadius: '4px', border: '1px solid var(--ads-color-border)', fontSize: '0.75rem' }}>
-                  <div>&gt; SKIN: <span style={{ color: 'var(--ads-color-primary)', fontWeight: 'bold' }}>{skin.toUpperCase()}</span></div>
-                  <div>&gt; TEXT: <span style={{ color: 'var(--ads-color-primary)' }}>{inputText || 'NULL'}</span></div>
-                  <div>&gt; RANGE: <span style={{ color: 'var(--ads-color-primary)' }}>{sliderVal}% ({radioVal.toUpperCase()})</span></div>
-                  <div>&gt; SYNTH: <span style={{ color: 'var(--ads-color-primary)' }}>{toggleVal ? 'ONLINE' : 'MUTED'}</span></div>
+                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '0.6rem', borderRadius: '4px', border: '1px solid var(--ads-color-border)', fontSize: '0.72rem', minHeight: '94px', display: 'flex', flexDirection: 'column', gap: '4px', overflow: 'hidden' }}>
+                  {systemLogs.map((log, idx) => (
+                    <div key={idx} style={{ opacity: Math.max(0.3, 1 - idx * 0.18), whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', color: idx === 0 ? 'var(--ads-color-primary)' : 'var(--ads-color-text)' }}>
+                      &gt; {log}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
 
           <div style={{ marginTop: '1.5rem', borderTop: '1px solid var(--ads-color-border)', paddingTop: '1.25rem', display: 'flex', gap: '0.75rem' }}>
-            <Button variant="primary" onClick={() => alert('Command Sent!')}>
+            <Button variant="primary" onClick={handleExecute}>
               EXECUTE INT_0x21
             </Button>
-            <Button variant="outline" onClick={() => setInputText('DEFAULT_RECOVERY_KEY')}>
+            <Button variant="outline" onClick={handleReload}>
               RELOAD DECK
             </Button>
             <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--ads-color-text-muted)' }}>AUDIO SYNTH:</span>
-              <Toggle checked={toggleVal} onChange={(checked) => {
-                setToggleVal(checked);
-                // Call global audio mute/unmute
-                RetroAudio.setMute(!checked);
-              }} />
+              <Toggle checked={toggleVal} onChange={handleAudioToggle} />
             </div>
           </div>
         </Panel>
 
         {/* CSS Token Inspector */}
-        <Panel title="🔍 CSS VARIABLE TOKEN INSPECTOR" eyebrow="SPECIFICATION">
+        <Panel className="ads-dashboard-card" title="🔍 CSS VARIABLE TOKEN INSPECTOR" eyebrow="SPECIFICATION">
           <p style={{ fontSize: '0.85rem', color: 'var(--ads-color-text-muted)', marginBottom: '1rem' }}>
             Real-time computed variables for the active skin. Shows how the style contract changes colors.
           </p>
@@ -256,70 +382,70 @@ export const WorkspaceDashboard: React.FC = () => {
       </div>
 
       {/* Components Catalog Panel */}
-      <Panel title="🧱 COMPONENT DIRECTORY INDEX" eyebrow="CATALOG">
+      <Panel className="ads-dashboard-card" title="🧱 COMPONENT DIRECTORY INDEX" eyebrow="CATALOG">
         <p style={{ fontSize: '0.85rem', color: 'var(--ads-color-text-muted)', marginBottom: '1.5rem' }}>
           Explore the 35 custom React components available in the <code>@allcapsjoe/ui-toolkit</code> package, fully styled via client-side CSS overrides.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
-          <div style={{ background: 'rgba(0,0,0,0.1)', padding: '1rem', border: '1px solid var(--ads-color-border)', borderRadius: '4px' }}>
+          <div className="ads-catalog-grid-box">
             <div style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--ads-color-primary)', borderBottom: '1px dashed var(--ads-color-border)', paddingBottom: '0.25rem', marginBottom: '0.5rem' }}>
               🕹️ INPUTS & CONTROLS
             </div>
-            <ul style={{ listStyleType: 'none', padding: 0, margin: 0, fontSize: '0.8rem', lineHeight: '1.6', color: 'var(--ads-color-text-muted)' }}>
-              <li>• Button</li>
-              <li>• IconButton</li>
-              <li>• Slider</li>
-              <li>• Toggle</li>
-              <li>• Checkbox</li>
-              <li>• RadioGroup</li>
-              <li>• SelectDropdown</li>
-              <li>• TextInput</li>
-              <li>• TextArea</li>
+            <ul className="ads-catalog-list">
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> Button selected'); }}>Button</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> IconButton selected'); }}>IconButton</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> Slider selected'); }}>Slider</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> Toggle selected'); }}>Toggle</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> Checkbox selected'); }}>Checkbox</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> RadioGroup selected'); }}>RadioGroup</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> SelectDropdown selected'); }}>SelectDropdown</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> TextInput selected'); }}>TextInput</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Input -> TextArea selected'); }}>TextArea</li>
             </ul>
           </div>
 
-          <div style={{ background: 'rgba(0,0,0,0.1)', padding: '1rem', border: '1px solid var(--ads-color-border)', borderRadius: '4px' }}>
+          <div className="ads-catalog-grid-box">
             <div style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--ads-color-primary)', borderBottom: '1px dashed var(--ads-color-border)', paddingBottom: '0.25rem', marginBottom: '0.5rem' }}>
               📊 DATA & FEEDBACK
             </div>
-            <ul style={{ listStyleType: 'none', padding: 0, margin: 0, fontSize: '0.8rem', lineHeight: '1.6', color: 'var(--ads-color-text-muted)' }}>
-              <li>• DataTable</li>
-              <li>• ProgressBar</li>
-              <li>• LEDIndicator</li>
-              <li>• Badge</li>
-              <li>• Toast</li>
-              <li>• Tooltip</li>
-              <li>• Alert</li>
-              <li>• Spinner</li>
+            <ul className="ads-catalog-list">
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> DataTable selected'); }}>DataTable</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> ProgressBar selected'); }}>ProgressBar</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> LEDIndicator selected'); }}>LEDIndicator</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> Badge selected'); }}>Badge</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> Toast selected'); }}>Toast</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> Tooltip selected'); }}>Tooltip</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> Alert selected'); }}>Alert</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Data -> Spinner selected'); }}>Spinner</li>
             </ul>
           </div>
 
-          <div style={{ background: 'rgba(0,0,0,0.1)', padding: '1rem', border: '1px solid var(--ads-color-border)', borderRadius: '4px' }}>
+          <div className="ads-catalog-grid-box">
             <div style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--ads-color-primary)', borderBottom: '1px dashed var(--ads-color-border)', paddingBottom: '0.25rem', marginBottom: '0.5rem' }}>
               📟 HIGH-FLAVOR UI
             </div>
-            <ul style={{ listStyleType: 'none', padding: 0, margin: 0, fontSize: '0.8rem', lineHeight: '1.6', color: 'var(--ads-color-text-muted)' }}>
-              <li>• Terminal</li>
-              <li>• ScanlineOverlay</li>
-              <li>• RetroModal</li>
-              <li>• CodeBlock</li>
-              <li>• TreeNav</li>
-              <li>• ThemeSwitcher</li>
+            <ul className="ads-catalog-list">
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> Terminal selected'); }}>Terminal</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> ScanlineOverlay selected'); }}>ScanlineOverlay</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> RetroModal selected'); }}>RetroModal</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> CodeBlock selected'); }}>CodeBlock</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> TreeNav selected'); }}>TreeNav</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: High Flavor -> ThemeSwitcher selected'); }}>ThemeSwitcher</li>
             </ul>
           </div>
 
-          <div style={{ background: 'rgba(0,0,0,0.1)', padding: '1rem', border: '1px solid var(--ads-color-border)', borderRadius: '4px' }}>
+          <div className="ads-catalog-grid-box">
             <div style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--ads-color-primary)', borderBottom: '1px dashed var(--ads-color-border)', paddingBottom: '0.25rem', marginBottom: '0.5rem' }}>
               🏛️ LAYOUTS & TEMPLATES
             </div>
-            <ul style={{ listStyleType: 'none', padding: 0, margin: 0, fontSize: '0.8rem', lineHeight: '1.6', color: 'var(--ads-color-text-muted)' }}>
-              <li>• AppShell</li>
-              <li>• Panel</li>
-              <li>• Grid</li>
-              <li>• Stack</li>
-              <li>• Divider</li>
-              <li>• Workbench</li>
+            <ul className="ads-catalog-list">
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> AppShell selected'); }}>AppShell</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> Panel selected'); }}>Panel</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> Grid selected'); }}>Grid</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> Stack selected'); }}>Stack</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> Divider selected'); }}>Divider</li>
+              <li className="ads-catalog-list-item" onClick={() => { RetroAudio.play('click'); addLog('Component Catalog: Layouts -> Workbench selected'); }}>Workbench</li>
             </ul>
           </div>
         </div>
@@ -334,21 +460,21 @@ export const WorkspaceDashboard: React.FC = () => {
           gap: '1rem'
         }}
       >
-        <div style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', border: '1px solid var(--ads-color-border)', borderRadius: 'var(--ads-radius)' }}>
+        <div className="ads-dashboard-card" style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', borderRadius: 'var(--ads-radius)' }}>
           <h3 style={{ fontSize: '0.9rem', margin: '0 0 0.5rem 0' }}>📂 Hacker Console</h3>
           <p style={{ fontSize: '0.78rem', color: 'var(--ads-color-text-muted)', margin: 0, lineHeight: '1.4' }}>
             Telemetry system tracking CPU loads, memory layouts, and active threads in real-time.
           </p>
         </div>
 
-        <div style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', border: '1px solid var(--ads-color-border)', borderRadius: 'var(--ads-radius)' }}>
+        <div className="ads-dashboard-card" style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', borderRadius: 'var(--ads-radius)' }}>
           <h3 style={{ fontSize: '0.9rem', margin: '0 0 0.5rem 0' }}>📁 Desktop Manager</h3>
           <p style={{ fontSize: '0.78rem', color: 'var(--ads-color-text-muted)', margin: 0, lineHeight: '1.4' }}>
             A virtual desktop simulator wrapping file managers, text editors, and terminal instances.
           </p>
         </div>
 
-        <div style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', border: '1px solid var(--ads-color-border)', borderRadius: 'var(--ads-radius)' }}>
+        <div className="ads-dashboard-card" style={{ background: 'var(--ads-color-surface)', padding: '1.25rem', borderRadius: 'var(--ads-radius)' }}>
           <h3 style={{ fontSize: '0.9rem', margin: '0 0 0.5rem 0' }}>⚙️ Workbench Shell</h3>
           <p style={{ fontSize: '0.78rem', color: 'var(--ads-color-text-muted)', margin: 0, lineHeight: '1.4' }}>
             Side navigation layout with sliding parameters drawers, code buffers, and live status reports.
