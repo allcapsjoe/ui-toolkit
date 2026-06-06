@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useGlobals } from 'storybook/preview-api';
 import { Button } from '../components/Button';
 import { LEDIndicator } from '../components/LEDIndicator';
 import { ProgressBar } from '../components/ProgressBar';
@@ -16,10 +15,7 @@ import { Panel } from '../components/Panel';
 import { RetroAudio } from '../utils/audio';
 
 export const WorkspaceDashboard: React.FC = () => {
-  // Sync skin state directly with Storybook global theme
-  const [globals, updateGlobals] = useGlobals();
-  const skin = (globals.theme as Skin) || 'captain';
-
+  const [skin, setSkin] = useState<Skin>('captain');
   const [sliderVal, setSliderVal] = useState<number>(65);
   const [inputText, setInputText] = useState<string>('SECURE_COMM_CHANNEL');
   const [toggleVal, setToggleVal] = useState<boolean>(true);
@@ -41,6 +37,31 @@ export const WorkspaceDashboard: React.FC = () => {
     const time = new Date().toLocaleTimeString();
     setSystemLogs(prev => [`[${time}] ${message}`, ...prev].slice(0, 5));
   };
+
+  // Sync skin state dynamically with Storybook's global addon channel
+  useEffect(() => {
+    // Try to get the Storybook channel from window
+    const channel = (window as any).__STORYBOOK_ADDONS_CHANNEL__;
+    
+    // Read the current global theme if already set on DOM container
+    const parentSkin = document.querySelector('[data-skin]')?.getAttribute('data-skin') as Skin;
+    if (parentSkin) {
+      setSkin(parentSkin);
+    }
+
+    if (channel) {
+      const handleGlobalsChange = ({ globals }: any) => {
+        if (globals && globals.theme) {
+          setSkin(globals.theme);
+        }
+      };
+
+      channel.on('globalsChanged', handleGlobalsChange);
+      return () => {
+        channel.off('globalsChanged', handleGlobalsChange);
+      };
+    }
+  }, []);
 
   // Read computed CSS variables to display in the Token Inspector live
   useEffect(() => {
@@ -65,8 +86,14 @@ export const WorkspaceDashboard: React.FC = () => {
   }, [skin]);
 
   const handleSkinChange = (newSkin: Skin) => {
-    // Update global Storybook theme parameter
-    updateGlobals({ theme: newSkin });
+    setSkin(newSkin);
+    
+    // Notify Storybook global toolbar & decorators of the theme change
+    const channel = (window as any).__STORYBOOK_ADDONS_CHANNEL__;
+    if (channel) {
+      channel.emit('updateGlobals', { globals: { theme: newSkin } });
+    }
+    
     RetroAudio.play('confirm');
     addLog(`Skin changed to: ${newSkin.toUpperCase()}`);
   };
