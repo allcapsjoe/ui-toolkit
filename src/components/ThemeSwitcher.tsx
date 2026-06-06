@@ -15,7 +15,6 @@ const defaultSkins: Array<{ id: Skin; label: string }> = [
   { id: 'win95',     label: '95' },
   { id: 'cyberpunk', label: 'CYBER' },
   { id: 'eink',      label: 'EINK' },
-  { id: 'mainframe', label: 'SYS' },
   { id: 'retro',     label: 'RETRO' },
   { id: 'archive',   label: '26' },
   { id: 'neon',      label: 'NEON' }

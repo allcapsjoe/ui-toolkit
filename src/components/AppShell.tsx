@@ -10,7 +10,7 @@ export interface AppShellProps {
 /**
  * AppShell
  * 
- * The structural foundation of an ADS application.
+ * The structural foundation of a CDS application.
  * Handles the sidebar, header, and main content area responsive layout.
  */
 export const AppShell: React.FC<AppShellProps> = ({ children, sidebar, header, footer }) => {

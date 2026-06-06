@@ -13,7 +13,7 @@ type Story = StoryObj<typeof AppShell>;
 
 export const Default: Story = {
   args: {
-    header: <div style={{ padding: '1rem' }}><h1>ADS APP SHELL</h1></div>,
+    header: <div style={{ padding: '1rem' }}><h1>CDS APP SHELL</h1></div>,
     sidebar: <div><h3>Navigation</h3><ul><li>Home</li><li>Status</li></ul></div>,
     children: <div><p>Main content area.</p></div>,
     footer: <div style={{ padding: '0.5rem' }}>System Ready.</div>,

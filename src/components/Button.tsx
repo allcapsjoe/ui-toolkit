@@ -8,9 +8,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * ADS Button
+ * CDS Button
  * 
- * A theme-aware button that maps to ADS CSS variables.
+ * A theme-aware button that maps to CDS CSS variables.
  * Designed to be predictable for AI agents and highly tactile with sound effects.
  */
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
