@@ -23,7 +23,7 @@ export const LEDIndicator = React.forwardRef<HTMLDivElement, LEDIndicatorProps>(
 
     const ledSize = sizeMap[size];
 
-    // Colors mapping to ADS variables
+    // Colors mapping to CDS variables
     const colorMap = {
       primary: 'var(--ads-color-primary, #39ff14)',
       secondary: 'var(--ads-color-secondary, #ff6b00)',

@@ -10,7 +10,7 @@ export interface GridProps {
 /**
  * Grid
  * 
- * A responsive grid system that adapts to the ADS theme.
+ * A responsive grid system that adapts to the CDS theme.
  */
 export const Grid: React.FC<GridProps> = ({ children, cols = 1, gap = '1rem', className = '' }) => {
   return (

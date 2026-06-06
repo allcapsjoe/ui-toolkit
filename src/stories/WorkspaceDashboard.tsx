@@ -520,7 +520,7 @@ export const WorkspaceDashboard: React.FC = () => {
               THEME CONTRACT METADATA:
             </span>
             <Alert variant="info" style={{ margin: 0, fontSize: '0.75rem' }}>
-              The <strong>ADS (ALLCAPS Design System)</strong> enforces strict isolation: all components look up custom properties. A skin overrides these properties dynamically to alter the style system.
+              The <strong>CDS (CAPS Design System)</strong> enforces strict isolation: all components look up custom properties. A skin overrides these properties dynamically to alter the style system.
             </Alert>
           </div>
         </Panel>

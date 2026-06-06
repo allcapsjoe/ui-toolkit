@@ -77,7 +77,7 @@ export const WorkbenchLayout: React.FC = () => {
   return (
     <div className="ads-workbench-layout-container" style={{ background: 'var(--ads-color-bg)', minHeight: '100vh', boxSizing: 'border-box' }}>
       <Workbench 
-        mobileTitle="ADS WORKBENCH"
+        mobileTitle="CDS WORKBENCH"
         mobileSubtitle="SYSTEM ONLINE"
         
         leftTitle="Primary Control"

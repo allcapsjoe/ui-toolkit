@@ -14,7 +14,7 @@ export interface RetroModalProps {
 /**
  * RetroModal
  * 
- * A centered dialog box that follows the ADS theme contract.
+ * A centered dialog box that follows the CDS theme contract.
  * Includes a backdrop and themed "Window" container.
  */
 export const RetroModal: React.FC<RetroModalProps> = ({ 

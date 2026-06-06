@@ -15,7 +15,7 @@ export interface DataTableProps<T> {
 /**
  * DataTable
  * 
- * A structured data grid that follows ADS aesthetics.
+ * A structured data grid that follows CDS aesthetics.
  * Automatically applies themed borders, hover effects, and typography.
  */
 export function DataTable<T>({ columns, data, onRowClick }: DataTableProps<T>) {
