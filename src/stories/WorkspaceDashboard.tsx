@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useGlobals } from '@storybook/preview-api';
+import { useGlobals } from 'storybook/preview-api';
 import { Button } from '../components/Button';
 import { LEDIndicator } from '../components/LEDIndicator';
 import { ProgressBar } from '../components/ProgressBar';
