@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Panel } from '../Panel';
 import { TreeNav } from '../TreeNav';
-import { DataTable } from '../DataTable';
+import { DataTable, DataTableColumn } from '../DataTable';
 import { FormGroup } from '../FormGroup';
 import { TextInput } from '../TextInput';
 import { SelectDropdown } from '../SelectDropdown';
@@ -33,11 +33,11 @@ export const DatabaseRecordsLayout: React.FC = () => {
     { id: "03", name: "Alan Turing", role: "analyst", status: "offline" }
   ];
 
-  const columns = [
-    { key: "id", header: "ID" },
-    { key: "name", header: "NAME" },
-    { key: "role", header: "ROLE" },
-    { key: "status", header: "STATUS" }
+  const columns: DataTableColumn<{ id: string; name: string; role: string; status: string; }>[] = [
+    { accessor: "id", header: "ID" },
+    { accessor: "name", header: "NAME" },
+    { accessor: "role", header: "ROLE" },
+    { accessor: "status", header: "STATUS" }
   ];
 
   const filteredData = dbData.filter(item => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Panel } from '../Panel';
 import { Terminal } from '../Terminal';
-import { DataTable } from '../DataTable';
+import { DataTable, DataTableColumn } from '../DataTable';
 import { ProgressBar } from '../ProgressBar';
 import { Alert } from '../Alert';
 import { Grid } from '../Grid';
@@ -20,11 +20,11 @@ export interface HackerConsoleLayoutProps {
  * process lists, load telemetry, and shell inputs.
  */
 export const HackerConsoleLayout: React.FC<HackerConsoleLayoutProps> = ({
-  systemName = "ALLCAPS_CORE_V3",
+  systemName = "SECURE_GATEWAY_V1",
   initialLines = [
-    "INITIALIZING SECURE TERMINAL CONNECTION...",
-    "HANDSHAKE ACCEPTED ON PORT 8400",
-    "UPLINK STABLE. WELCOME BACK, OPERATOR."
+    "LOGGING IN ON PORT 22...",
+    "SECURE KEY EXCHANGE OK.",
+    "READY."
   ]
 }) => {
   const [lines, setLines] = useState<string[]>(initialLines);
@@ -56,11 +56,11 @@ export const HackerConsoleLayout: React.FC<HackerConsoleLayoutProps> = ({
     { id: "0x0C", process: "MEM_DUMP", status: "WAIT", load: "0%" }
   ];
 
-  const columns = [
-    { key: "id", header: "ADDR" },
-    { key: "process", header: "PROCESS" },
-    { key: "status", header: "STATUS" },
-    { key: "load", header: "LOAD" }
+  const columns: DataTableColumn<{ id: string; process: string; status: string; load: string; }>[] = [
+    { accessor: "id", header: "ADDR" },
+    { accessor: "process", header: "PROCESS" },
+    { accessor: "status", header: "STATUS" },
+    { accessor: "load", header: "LOAD" }
   ];
 
   return (
