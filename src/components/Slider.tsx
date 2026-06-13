@@ -5,6 +5,7 @@ export interface SliderProps {
   value: number;
   min?: number;
   max?: number;
+  step?: number;
   onChange: (value: number) => void;
   variant?: 'primary' | 'secondary';
 }
@@ -20,6 +21,7 @@ export const Slider: React.FC<SliderProps> = ({
   value, 
   min = 0, 
   max = 100, 
+  step,
   onChange,
   variant = 'primary'
 }) => {
@@ -39,8 +41,9 @@ export const Slider: React.FC<SliderProps> = ({
         type="range"
         min={min}
         max={max}
+        step={step}
         value={value}
-        onChange={(e) => onChange(parseInt(e.target.value))}
+        onChange={(e) => onChange(parseFloat(e.target.value))}
         style={{
           width: '100%',
           accentColor: variant === 'primary' ? 'var(--ads-color-primary)' : 'var(--ads-color-secondary)'
