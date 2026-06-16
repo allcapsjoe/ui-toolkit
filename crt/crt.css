@@ -249,11 +249,11 @@
 }
 
 
-/* Active Glitch Sync wobble trigger on control interactions */
-/* Active Glitch Sync wobble trigger on control interactions */
+/* Active Glitch Sync wobble trigger on control interactions - DISABLED TO PREVENT MOBILE INPUT FOCUS JITTER
 [data-skin="crt"]:has(input:focus-visible) {
   animation: crt-screen-glitch 0.1s steps(2) infinite;
 }
+*/
 
 @keyframes crt-flicker {
   0% { opacity: 1; }
