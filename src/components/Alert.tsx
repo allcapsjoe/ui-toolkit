@@ -5,6 +5,7 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'info' | 'warning' | 'error';
   title?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
