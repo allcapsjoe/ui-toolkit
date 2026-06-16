@@ -7,6 +7,7 @@ export interface StackProps {
   align?: React.CSSProperties['alignItems'];
   justify?: React.CSSProperties['justifyContent'];
   className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -21,7 +22,8 @@ export const Stack: React.FC<StackProps> = ({
   gap = '1rem', 
   align, 
   justify, 
-  className = '' 
+  className = '',
+  style
 }) => {
   return (
     <div className={`ads-stack ads-stack--${direction} ${className}`} style={{
@@ -29,7 +31,8 @@ export const Stack: React.FC<StackProps> = ({
       flexDirection: direction,
       gap,
       alignItems: align,
-      justifyContent: justify
+      justifyContent: justify,
+      ...style
     }}>
       {children}
     </div>

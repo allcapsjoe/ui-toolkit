@@ -34,10 +34,10 @@ export const DatabaseRecordsLayout: React.FC = () => {
   ];
 
   const columns = [
-    { key: "id", header: "ID" },
-    { key: "name", header: "NAME" },
-    { key: "role", header: "ROLE" },
-    { key: "status", header: "STATUS" }
+    { accessor: "id" as const, header: "ID" },
+    { accessor: "name" as const, header: "NAME" },
+    { accessor: "role" as const, header: "ROLE" },
+    { accessor: "status" as const, header: "STATUS" }
   ];
 
   const filteredData = dbData.filter(item => {

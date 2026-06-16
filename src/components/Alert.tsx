@@ -5,6 +5,7 @@ export interface AlertProps {
   variant?: 'info' | 'warning' | 'error';
   title?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -16,7 +17,8 @@ export const Alert: React.FC<AlertProps> = ({
   children,
   variant = 'info',
   title,
-  className = ''
+  className = '',
+  style
 }) => {
   const colors = {
     info: {
@@ -50,7 +52,8 @@ export const Alert: React.FC<AlertProps> = ({
         display: 'flex',
         flexDirection: 'column',
         gap: '0.25rem',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        ...style
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold' }}>

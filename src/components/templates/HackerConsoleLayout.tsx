@@ -57,10 +57,10 @@ export const HackerConsoleLayout: React.FC<HackerConsoleLayoutProps> = ({
   ];
 
   const columns = [
-    { key: "id", header: "ADDR" },
-    { key: "process", header: "PROCESS" },
-    { key: "status", header: "STATUS" },
-    { key: "load", header: "LOAD" }
+    { accessor: "id" as const, header: "ADDR" },
+    { accessor: "process" as const, header: "PROCESS" },
+    { accessor: "status" as const, header: "STATUS" },
+    { accessor: "load" as const, header: "LOAD" }
   ];
 
   return (
