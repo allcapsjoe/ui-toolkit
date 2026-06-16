@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface StackProps {
+export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   direction?: 'row' | 'column';
   gap?: string | number;
@@ -23,7 +23,8 @@ export const Stack: React.FC<StackProps> = ({
   align, 
   justify, 
   className = '',
-  style
+  style,
+  ...props
 }) => {
   return (
     <div className={`ads-stack ads-stack--${direction} ${className}`} style={{
@@ -33,7 +34,7 @@ export const Stack: React.FC<StackProps> = ({
       alignItems: align,
       justifyContent: justify,
       ...style
-    }}>
+    }} {...props}>
       {children}
     </div>
   );

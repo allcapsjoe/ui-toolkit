@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface AlertProps {
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   variant?: 'info' | 'warning' | 'error';
   title?: string;
@@ -18,7 +18,8 @@ export const Alert: React.FC<AlertProps> = ({
   variant = 'info',
   title,
   className = '',
-  style
+  style,
+  ...props
 }) => {
   const colors = {
     info: {
@@ -55,6 +56,7 @@ export const Alert: React.FC<AlertProps> = ({
         textTransform: 'uppercase',
         ...style
       }}
+      {...props}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold' }}>
         <span>{colors.symbol}</span>
